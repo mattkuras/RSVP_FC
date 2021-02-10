@@ -10,9 +10,9 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [admin, setAdmin] = useState({})
 
-  // useEffect(() => {
-  //   loginStatus()
-  // }, [])
+  useEffect(() => {
+    loginStatus()
+  }, [])
 
   const loginStatus = async () => {
     await Axios.get('/logged_in',
