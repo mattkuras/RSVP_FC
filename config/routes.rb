@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
+  resources :players
+  resources :games
   get '*path', to: 'home#index', via: :all
 
   
