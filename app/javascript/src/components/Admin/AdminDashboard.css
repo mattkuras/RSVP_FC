@@ -10,6 +10,7 @@
   padding: 0 10px;
   background-color: #24217a;
   color: #fff;
+  box-shadow: 0 8px 6px -6px black;
 }
 
 .links {
@@ -113,4 +114,26 @@
 .trash-icon:hover {
   cursor: pointer;
   color: #000;
+}
+
+@media only screen and (max-width: 1100px) {
+  .create-game {
+    text-align: center;
+    padding: 0;
+  }
+  .game-input-container {
+    flex-direction: column;
+    width: 50%;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 25%;
+  }
+
+  .game-input-container .game-info {
+    margin-right: auto;
+  }
+
+  .game-input-container input {
+    margin: 15px auto;
+  }
 }
