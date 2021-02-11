@@ -3,6 +3,7 @@ import './App.css';
 import { Redirect, Route, BrowserRouter as Router } from "react-router-dom"
 import Axios from 'axios'
 import Register from './components/Homepage/Register'
+import Landing from './components/Landing/Landing'
 
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
   return (
     <Router>
       <Route exact path="/signup" component={Register} />
-      <Route exact path="/" />
+      <Route exact path="/" component={Landing} />
       {/* <Route exact path='/admindashboard'
         render={props => (
           <AdminDashboard {...props} handleLogin={handleLogin} handleLogout={handleLogout} loggedInStatus={isLoggedIn} />

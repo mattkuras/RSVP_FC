@@ -1,5 +1,5 @@
 import React from "react"
-import "./Homepage.css"
+import "./Register.css"
 import SignUp from './SignUp'
 
 const Register = () => {
