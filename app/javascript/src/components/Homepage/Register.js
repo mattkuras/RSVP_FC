@@ -1,9 +1,8 @@
 import React from "react"
 import "./Homepage.css"
-import {Link} from "react-router-dom"
 import SignUp from './SignUp'
 
-const Homepage = () => {
+const Register = () => {
   return (
     <div className="container">
       <SignUp/>
@@ -11,4 +10,4 @@ const Homepage = () => {
   );
 }
 
-export default Homepage;
+export default Register;

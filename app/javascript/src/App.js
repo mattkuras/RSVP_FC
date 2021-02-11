@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import './App.css';
 import { Redirect, Route, BrowserRouter as Router } from "react-router-dom"
 import Axios from 'axios'
-import Homepage from './components/Homepage/Homepage'
+import Register from './components/Homepage/Register'
 
 
 function App() {
@@ -35,7 +35,8 @@ function App() {
 
   return (
     <Router>
-      <Route exact path="/" component={Homepage} />
+      <Route exact path="/signup" component={Register} />
+      <Route exact path="/" />
       {/* <Route exact path='/admindashboard'
         render={props => (
           <AdminDashboard {...props} handleLogin={handleLogin} handleLogout={handleLogout} loggedInStatus={isLoggedIn} />

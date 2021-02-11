@@ -8,4 +8,4 @@ class Member < ApplicationRecord
     ref ? true : false 
   end
     
-end
+end 
