@@ -1,5 +1,7 @@
 import React from 'react';
 import "./AdminDashboard.css"
+import {AiOutlinePlusCircle, AiOutlineMinusCircle} from "react-icons/ai"
+import {FaRegTrashAlt} from "react-icons/fa"
 
 const AdminDashboard = () => {
     return (
@@ -26,7 +28,8 @@ const AdminDashboard = () => {
 
           <div className="member-list">
 
-          <div className="member">
+          <div className="member header">
+            <h3>Delete</h3>
                 <h3>Member Email</h3>
                 <h3>Member Name</h3>
                 <h3>Referrer Email</h3>
@@ -35,27 +38,30 @@ const AdminDashboard = () => {
               </div>
 
               <div className="member">
+                <FaRegTrashAlt className="trash-icon"/>
                 <h3>JesseMcMahon@gmail.com</h3>
                 <h3>Jesse McMahon</h3>
                 <h3>MattKuras@gmail.com</h3>
                 <h3>2</h3>
-                <h3>+ -</h3>
+                <h3><AiOutlinePlusCircle className="icon"/> <AiOutlineMinusCircle className="icon"/></h3>
               </div>
 
               <div className="member">
+                <FaRegTrashAlt className="trash-icon" />
                 <h3>JesseMcMahon@gmail.com</h3>
                 <h3>Jesse McMahon</h3>
                 <h3>MattKuras@gmail.com</h3>
                 <h3>2</h3>
-                <h3>+ -</h3>
+                <h3><AiOutlinePlusCircle className="icon"/> <AiOutlineMinusCircle className="icon"/></h3>
               </div>
 
               <div className="member">
+              <FaRegTrashAlt className="trash-icon"/>
                 <h3>JesseMcMahon@gmail.com</h3>
                 <h3>Jesse McMahon</h3>
                 <h3>MattKuras@gmail.com</h3>
                 <h3>2</h3>
-                <h3>+ -</h3>
+                <h3><AiOutlinePlusCircle className="icon"/> <AiOutlineMinusCircle className="icon"/></h3>
               </div>
           </div>
         </>

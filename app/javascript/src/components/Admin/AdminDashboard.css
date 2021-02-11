@@ -81,6 +81,36 @@
 .member {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid #ccc;
-  padding: 0 15px;
+  padding: 0 5px;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.member h3 {
+  /* border-right: 1px solid black; */
+  flex: 1;
+}
+
+.header {
+  border-bottom: 2px solid #000;
+}
+
+.icon:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #000;
+  border-radius: 50%;
+}
+
+.trash-icon {
+  flex: 1;
+  color: red;
+  margin-right: 3px;
+}
+
+.trash-icon:hover {
+  cursor: pointer;
+  color: #000;
 }
