@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+
 * {
   padding: 0;
   margin: 0;
@@ -13,7 +15,12 @@ h3 {
   font-style: italic;
   font-size: 2rem;
 }
+
+.email-input {
+  width: 180px;
+}
 .container {
+  font-family: "Quicksand", sans-serif;
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -52,10 +59,19 @@ h3 {
 .body {
   height: 100vh;
   width: 100%;
-  /* background-color: #f9ea8f; */
   background-image: url("./soccerpic.jpg");
   background-size: cover;
   background-position: bottom;
+}
+
+.sign-up-link {
+  text-decoration: none;
+  color: #aaa;
+}
+
+.sign-up-link:hover {
+  color: #000;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 630px) {

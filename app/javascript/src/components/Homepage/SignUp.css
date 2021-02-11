@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
 
-.contact-header {
+/* .contact-header {
   font-family: "Rajdhani", sans-serif;
   font-size: 4.5rem;
   font-weight: 400;
@@ -46,4 +46,11 @@
   width: 15%;
   height: 1.5rem;
   margin: 10px auto;
+} */
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
