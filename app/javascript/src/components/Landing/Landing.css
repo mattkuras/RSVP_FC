@@ -52,8 +52,10 @@ h3 {
 .body {
   height: 100vh;
   width: 100%;
-  background-color: #3bb78f;
-  background-image: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%);
+  /* background-color: #f9ea8f; */
+  background-image: url("./soccerpic.jpg");
+  background-size: cover;
+  background-position: bottom;
 }
 
 @media only screen and (max-width: 630px) {
