@@ -12,7 +12,9 @@ class MembersController < ApplicationController
   end
 
   def create
+    byebug
     member = Member.new(member_params)
+    member.create_datetime(params[:datetime])
     if Member.check_reference(params[:member][:reference])
       if member.save
         render json: member

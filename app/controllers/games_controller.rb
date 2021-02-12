@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  skip_before_action :verify_authenticity_token
     
     def index
         games = Game.all 
@@ -6,6 +7,13 @@ class GamesController < ApplicationController
     end
 
     def create
+        game = Game.new(game_params)
+        game.create_datetime(params[:datetime])
+        if game.save 
+            render json: game
+        else
+            render json: 'errrrror'
+        end
     end
 
     def show
@@ -19,9 +27,9 @@ class GamesController < ApplicationController
     private 
     def game_params
         params.require(:game).permit(
-            :datetime, 
             :location,
-            :capacity
+            :capacity,
+            :datetime
         )
     end
 
