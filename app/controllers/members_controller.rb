@@ -15,8 +15,10 @@ class MembersController < ApplicationController
     request = Request.find_by(id: params[:id])
     member = request.accept 
     if member.save 
+      request.destroy 
       render json: member 
     else 
+      byebug
       render json: 'there was an error'
     end 
   end

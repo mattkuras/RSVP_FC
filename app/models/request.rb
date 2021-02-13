@@ -1,7 +1,8 @@
-class Request < Member 
+class Request < ApplicationRecord 
     
     def accept
-       Member.new(email, first_name, last_name, reference)
+        request = {email: email, last_name: last_name, first_name: first_name, reference: reference}
+        Member.new(request)
     end
 
   
