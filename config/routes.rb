@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'requests/create'
+  get 'requests/index'
+  get 'requests/destroy'
+  get 'requests/show'
   root 'home#index'
   resources :players
   resources :games
