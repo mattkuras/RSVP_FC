@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  get 'requests/create'
-  get 'requests/index'
-  get 'requests/destroy'
-  get 'requests/show'
-  root 'home#index'
+  # post '/requests', to: 'requests#create'
+  # get 'requests/index'
+  # get 'requests/destroy'
+  # get 'requests/show'
+  # root 'home#index'
+  resources :requests
   resources :players
   resources :games
+  post 'members/create'
   get '*path', to: 'home#index', via: :all
 
   

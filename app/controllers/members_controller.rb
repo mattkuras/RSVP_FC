@@ -12,18 +12,13 @@ class MembersController < ApplicationController
   end
 
   def create
-    byebug
-    member = Member.new(member_params)
-    member.create_datetime(params[:datetime])
-    if Member.check_reference(params[:member][:reference])
-      if member.save
-        render json: member
-      else
-        render json: "there was an error creating your member"
-      end
-    else
-        render json: 'this reference is incorrect'
-    end
+    request = Request.find_by(id: params[:id])
+    member = request.accept 
+    if member.save 
+      render json: member 
+    else 
+      render json: 'there was an error'
+    end 
   end
 
   def destroy
@@ -32,15 +27,7 @@ class MembersController < ApplicationController
     render json: "member has been deleted from dashboard"
   end
 
-  def update
-    member = Member.find(params[:id])
-    member.update(member_params)
-    if member.save?
-      render json: 200
-    else
-      render json: "there was an error saving poduct. maybe try deleting it and recreating"
-    end
-  end
+
 
   private
 

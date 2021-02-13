@@ -13,7 +13,6 @@ class RequestsController < ApplicationController
 
   def create
     request = Request.new(request_params)
-    request.create_datetime(params[:datetime])
     if Request.check_reference(params[:request][:reference])
       if request.save
         render json: request
