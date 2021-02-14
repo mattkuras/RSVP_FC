@@ -1,9 +1,26 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import {Link} from "react-router-dom"
 import "./Landing.css"
-
+import Axios from 'axios' 
 const Landing = () => {
     const [userEmail, setUserEmail] = useState("")
+    const [game, setGame] = useState({})
+    
+    useEffect(() => {
+        fetchGame()
+    }, [])
+
+    const fetchGame = () => {
+        Axios.get('/games/current')
+        .then(resp => {
+            if (resp.statusText == 'OK'){
+                setGame(resp.data)
+            } else {
+                console.log('there was an error getting your game. check log below')
+                console.log(resp)
+            }
+        })
+    }
 
     const handleChange = (e) => {
        setUserEmail(e.target.value)

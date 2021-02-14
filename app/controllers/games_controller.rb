@@ -3,7 +3,16 @@ class GamesController < ApplicationController
     
     def index
         games = Game.all 
-        render json: games
+        render json: games.to_json(methods: [:formatted_time])
+    end
+
+    def current_game 
+        game = Game.last 
+        if game 
+            render json: game.to_json(methods: [:formatted_time])
+        else 
+            render json: 'errrror'
+        end 
     end
 
     def create
@@ -17,6 +26,7 @@ class GamesController < ApplicationController
     end
 
     def show
+
         game = Game.find_by(id: params[:id])
         render json: game
     end
