@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # get 'requests/index'
   # get 'requests/destroy'
   # get 'requests/show'
-  # root 'home#index'
+  root 'home#index'
   resources :requests
   resources :games
   post 'members/create'
