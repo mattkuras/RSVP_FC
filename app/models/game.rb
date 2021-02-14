@@ -1,12 +1,14 @@
 class Game < ApplicationRecord
-    has_many :members, through: :players
-    
+    has_many :rsvps
+    has_many :members, through: :rsvps
+
     validates :datetime, :location, :capacity, presence: :true 
 
 
     def remaining_capacity
         capacity - members.length  
     end
+
 
     def create_datetime(dt)
         n = dt.split(' ').map{|num| num.to_i}

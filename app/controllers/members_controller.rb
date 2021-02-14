@@ -3,12 +3,12 @@ class MembersController < ApplicationController
 
   def index
     members = Member.all
-    render json: members.to_json(methods: [:image_url])
+    render json: members.to_json
   end
 
   def show
     member = Member.find(params[:id])
-    render json: member.to_json(methods: [:image_url])
+    render json: member.to_json
   end
 
   def create
@@ -26,7 +26,7 @@ class MembersController < ApplicationController
   def destroy
     member = Member.find(params[:id])
     member.destroy
-    render json: "member has been deleted from dashboard"
+    render json: "member has been deleted"
   end
 
 

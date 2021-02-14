@@ -1,4 +1,4 @@
-class Player < ApplicationRecord
+class Rsvp < ApplicationRecord
     belongs_to :game 
     belongs_to :member
 end

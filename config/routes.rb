@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   # get 'requests/show'
   # root 'home#index'
   resources :requests
-  resources :players
   resources :games
   post 'members/create'
   get '*path', to: 'home#index', via: :all
