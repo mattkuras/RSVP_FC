@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    games = Game.all
+    games = Game.all.sort_by {|g| g.datetime}
     render json: games
   end
 
