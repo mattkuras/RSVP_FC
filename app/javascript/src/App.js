@@ -41,7 +41,7 @@ function App() {
       <Route exact path="/register" component={Register} />
       <Route exact path="/" component={Landing} />
       <Route exact path="/admin" component={AdminLogin} />
-      <Route exact path="/admindashboard" component={AdminDashboard} />
+      <Route path="/admindashboard" component={AdminDashboard} />
       {/* <Route exact path='/admindashboard'
         render={props => (
           <AdminDashboard {...props} handleLogin={handleLogin} handleLogout={handleLogout} loggedInStatus={isLoggedIn} />
