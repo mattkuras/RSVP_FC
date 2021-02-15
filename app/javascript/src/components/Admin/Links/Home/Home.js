@@ -6,7 +6,8 @@ import Axios from 'axios'
 
 const Home = (props) => {
   const [location, setLocation] = useState("")
-  const [datetime, setDatetime] = useState([])
+  const [date, setDate] = useState([])
+  const [time, setTime] = useState([])
   const [capacity, setCapacity] = useState('')
   const [displayMessage, setDisplayMessage] = useState('')
 
@@ -35,6 +36,8 @@ const Home = (props) => {
   }
 
   const handleSubmit = () => {
+    let datetime = `${date} ${time}`
+    // date and time togethe should be a string in this format "nov 30 2021 10:00pm"
     let game = { datetime, location, capacity }
     Axios.post('/games', { game })
       .then(resp => {
@@ -45,7 +48,8 @@ const Home = (props) => {
         }
       })
     setLocation('')
-    setDatetime('')
+    setDate('')
+    setTime('')
     setCapacity('')
   }
 
@@ -54,7 +58,8 @@ const Home = (props) => {
       <div className="create-game">
         <h2>Enter new game here:</h2>
         <div className="game-input-container">
-          <input className="game-info" type="text" placeholder="Enter Date Here" onChange={(e) => setDatetime(e.target.value)} />
+          <input className="game-info" type="text" placeholder="Enter Date Here" onChange={(e) => setDate(e.target.value)} />
+          <input className="game-info" type="text" placeholder="Enter Time Here" onChange={(e) => setTime(e.target.value)} />
           <input className="game-info" type="text" placeholder="Enter Location Here" onChange={(e) => setLocation(e.target.value)} />
           <input className="game-info" type="text" placeholder="Enter Capacity" onChange={(e) => setCapacity(e.target.value)} />
           <input className="create-btn" type="submit" value="Create" onClick={handleSubmit} />
