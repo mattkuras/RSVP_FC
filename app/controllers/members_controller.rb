@@ -29,7 +29,9 @@ class MembersController < ApplicationController
     render json: "member has been deleted"
   end
 
-
+def all 
+  Member.all
+end
 
   private
 

@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   resources :requests
   resources :rsvps, only: [:create]
 
-  resources :games
   get 'games/current', to: 'games#current_game'
+  resources :games
   
   
   get '*path', to: 'home#index', via: :all

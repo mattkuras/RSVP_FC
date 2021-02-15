@@ -9,6 +9,9 @@ class Game < ApplicationRecord
         capacity - members.length  
     end
 
+    def as_json 
+        super(:include => :formatted_time)
+    end
 
     def create_datetime(dt)
         n = dt.split(' ').map{|num| num.to_i}

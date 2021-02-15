@@ -3,10 +3,10 @@ class HomeController < ApplicationController
     end
 
     def dashboard
-        requests = Request.all 
-        members = Member.all 
-        games = Game.all 
+        games = Game.all
+        requests = Request.all
+        members = Member.all
+        data = [games, requests, members]
         
-        render json: [games, requests, members]
     end
 end 

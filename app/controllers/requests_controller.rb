@@ -29,6 +29,10 @@ class RequestsController < ApplicationController
     request.destroy
     render json: "request has been deleted from dashboard"
   end
+  
+  def all
+    Request.all 
+  end
 
   private
 
