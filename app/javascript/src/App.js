@@ -14,7 +14,7 @@ function App() {
   const [admin, setAdmin] = useState({})
 
   useEffect(() => {
-    loginStatus()
+    // loginStatus()
   }, [])
 
   const loginStatus = async () => {

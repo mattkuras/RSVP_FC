@@ -17,18 +17,30 @@ const AdminDashboard = () => {
   const [members, setMembers] = useState([])
 
   useEffect(() => {
-    fetchData()
+    fetchGames()
+    fetchRequests()
+    fetchMembers()
   }, [])
 
-  const fetchData = () => {
-    Axios.get('/dashboard/data')
+  const fetchGames = () => {
+    Axios.get('/games')
     .then(resp => {
-      setGames(resp.data[0])
-      setRequests(resp.data[1])
-      setMembers(resp.data[2])
-      debugger
+      setGames(resp.data)
     } )
   }
+  const fetchRequests = () => {
+    Axios.get('/requests')
+    .then(resp => {
+      setRequests(resp.data)
+    } )
+  }
+  const fetchMembers = () => {
+    Axios.get('/members')
+    .then(resp => {
+      setMembers(resp.data)
+    } )
+  }
+
 
   let { path, url } = useRouteMatch();
 

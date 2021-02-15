@@ -4,10 +4,6 @@ class Request < ApplicationRecord
     Member.new(request)
   end
 
-  def as_json
-    super(:include => :full_name)
-  end
-
   def full_name
     first_name + " " + last_name
   end

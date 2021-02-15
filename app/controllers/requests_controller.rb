@@ -3,12 +3,12 @@ class RequestsController < ApplicationController
 
   def index
     requests = Request.all
-    render json: requests.to_json
+    render json: requests
   end
 
   def show
     request = Request.find(params[:id])
-    render json: request.to_json
+    render json: request
   end
 
   def create
