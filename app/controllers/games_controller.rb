@@ -9,7 +9,7 @@ class GamesController < ApplicationController
     def current_game 
         game = Game.last 
         if game 
-            render json: game.to_json(methods: [:formatted_time])
+            render json: game
         else 
             render json: 'errrror'
         end 

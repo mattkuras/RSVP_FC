@@ -13,5 +13,9 @@ class Member < ApplicationRecord
   def full_name 
     first_name + ' ' + last_name
   end
+
+  def self.exists?(email)
+    Member.find_by(email: email) != nil ? true : false 
+  end
     
 end 

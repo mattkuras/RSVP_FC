@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'home#index'
   
   resources :requests
+  resources :rsvps, only: [:create]
 
   get 'games/current', to: 'games#current_game'
   resources :games

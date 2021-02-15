@@ -1,3 +1,5 @@
 class RsvpSerializer < ActiveModel::Serializer
-  attributes :id, 
+  attributes :id
+  belongs_to :member 
+  belongs_to :game
 end
