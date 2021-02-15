@@ -6,6 +6,15 @@ class GamesController < ApplicationController
         render json: games
     end
 
+    def current_game 
+        game = Game.last 
+        if game 
+            render json: game
+        else 
+            render json: 'errrror'
+        end 
+    end
+
     def create
         game = Game.new(game_params)
         game.create_datetime(params[:datetime])
@@ -17,6 +26,7 @@ class GamesController < ApplicationController
     end
 
     def show
+
         game = Game.find_by(id: params[:id])
         render json: game
     end
