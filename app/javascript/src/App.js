@@ -38,7 +38,7 @@ function App() {
 
   return (
     <Router>
-      <Route exact path="/signup" component={Register} />
+      <Route exact path="/register" component={Register} />
       <Route exact path="/" component={Landing} />
       <Route exact path="/admin" component={AdminLogin} />
       <Route exact path="/admindashboard" component={AdminDashboard} />

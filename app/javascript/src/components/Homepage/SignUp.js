@@ -10,13 +10,13 @@ const SignUp = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        let member = {
+        let request = {
             email: email,
             first_name: firstName,
             last_name: lastName,
             reference: reference
         }
-        Axios.post('/members', { member }, { withCredentials: true })
+        Axios.post('/requests', { request }, { withCredentials: true })
             .then(response => {
                 console.log(response)
             })

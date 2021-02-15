@@ -13,7 +13,7 @@ class RequestsController < ApplicationController
 
   def create
     request = Request.new(request_params)
-    if Request.check_reference(params[:request][:reference])
+    if Member.check_reference(request_params[:reference])
       if request.save
         render json: request
       else

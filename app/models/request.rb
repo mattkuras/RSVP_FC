@@ -5,6 +5,8 @@ class Request < ApplicationRecord
         Member.new(request)
     end
 
+    
+
   
 
 end
