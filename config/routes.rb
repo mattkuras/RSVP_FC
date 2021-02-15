@@ -1,15 +1,13 @@
 Rails.application.routes.draw do
-  # post '/requests', to: 'requests#create'
-  # get 'requests/index'
-  # get 'requests/destroy'
-  # get 'requests/show'
+
   root 'home#index'
-  
+  get 'dashboard/data', to: 'home#dashboard'
+
   resources :requests
   resources :rsvps, only: [:create]
 
-  get 'games/current', to: 'games#current_game'
   resources :games
+  get 'games/current', to: 'games#current_game'
   
   
   get '*path', to: 'home#index', via: :all

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "./AdminDashboard.css"
 import Home from './Links/Home/Home'
-import Matches from './Links/Matches/Matches'
+import Games from './Links/Games/Games'
 import Requests from './Links/Requests/Requests'
 import Axios from 'axios'
 import {
@@ -12,12 +12,21 @@ import {
 } from "react-router-dom";
 
 const AdminDashboard = () => {
-  useEffect(() => {
+  const [requests, setRequests] = useState([])
+  const [games, setGames] = useState([])
+  const [members, setMembers] = useState([])
 
+  useEffect(() => {
+    fetchData()
   }, [])
 
   const fetchData = () => {
-    
+    Axios.get('/dashboard/data')
+    .then(resp => {
+      setGames(resp.data[0])
+      setRequests(resp.data[1])
+      setMembers(resp.data[2])
+    } )
   }
 
   let { path, url } = useRouteMatch();
@@ -28,17 +37,15 @@ const AdminDashboard = () => {
         <h1>RsvpFC</h1>
         <h2>Logout</h2>
       </nav>
-
       <div className="links">
         <h3 className="link-item"><Link to={`${url}/matches`}>Current Matches</Link></h3>
         <h3 className="link-item"><Link to={`${url}`}>Home</Link></h3>
         <h3 className="link-item"><Link to={`${url}/requests`}>Member Requests</Link></h3>
       </div>
-  
 
       <Switch>
-        <Route exact path={path} component={Home}/>
-        <Route path={`${path}/matches`}component={Matches}/>
+        <Route exact path={path}><Home members={members}/></Route>
+        <Route path={`${path}/games`}component={Games}/>
         <Route path={`${path}/requests`} component={Requests}/>
       </Switch>
     </>

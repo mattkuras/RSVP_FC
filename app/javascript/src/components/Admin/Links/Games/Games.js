@@ -1,7 +1,8 @@
 import React from "react"
-import "./Matches.css"
+import "./Games.css"
 
 const Games = () => {
+  
   return (
     <div className="games-container">
     </div>
