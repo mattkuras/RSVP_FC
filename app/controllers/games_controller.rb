@@ -29,13 +29,15 @@ class GamesController < ApplicationController
     render json: game
   end
 
-  def delete
+  def destroy
+    game = Game.find_by(id: params[:id])
+    if game.destroy
+      render json: 'game has been deleted'
+    else
+      render json: game.errors
+    end
   end
 
-  def all
-    Game.all
-
-  end
 
   private
 
