@@ -28,6 +28,7 @@ function App() {
   }
 
   const handleLogin = (data) => {
+    console.log(data)
     // setAdmin(data.admin)
     setIsLoggedIn(true)
   }
