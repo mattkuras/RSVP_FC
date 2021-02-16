@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Axios from 'axios'
+import "./SignUp.css"
 
 const SignUp = () => {
 
@@ -28,21 +29,31 @@ const SignUp = () => {
     };
 
     return (
-        <div className='signup-container'>
+        // <div className='signup-container'>
             <form className="contact-form" onSubmit={handleSubmit}>
-                <div className="input-container dub">
-                    <input className="input split" type="text" placeholder="First Name" id="first-name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-                    <input className="input split" type="text" placeholder="Last Name" id="last-name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+                <div className="register-input-container">
+                     <label for="first-name">First Name: </label>
+                     <input name="first-name" className="input" type="text" placeholder="First Name" id="first-name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
                 </div>
-                <div className="input-container">
-                    <input className="input" type="text" placeholder="Enter Email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+
+                <div className="register-input-container">
+                    <label for="last-name">Last Name: </label>
+                    <input name="last-name" className="input" type="text" placeholder="Last Name" id="last-name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
                 </div>
-                <div className="input-container">
-                    <input className="input" type="text" placeholder="Reference" id="reference" value={reference} onChange={(e) => setReference(e.target.value)} />
+
+                <div className="register-input-container">
+                    <label for="email">Email Address: </label>
+                    <input name="email" className="input" type="text" placeholder="Enter Email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
+
+                <div className="register-input-container">
+                   <label for="reference">Reference Email: </label>
+                   <input name="reference" className="input" type="text" placeholder="Reference" id="reference" value={reference} onChange={(e) => setReference(e.target.value)} />  
+                </div>
+ 
                 <input type="submit" className='submit' />
             </form>
-        </div>
+        // </div>
     );
 }
 

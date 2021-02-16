@@ -43,7 +43,7 @@ function App() {
         render={props => (
           <AdminDashboard {...props} loggedInStatus={isLoggedIn} handleLogout={handleLogout} />
         )}>
-        {isLoggedIn ? null : <Redirect to="/admin" />}
+        {/* {isLoggedIn ? null : <Redirect to="/admin" />} */}
       </Route>
       <Route exact path='/admin'
         render={props => (
