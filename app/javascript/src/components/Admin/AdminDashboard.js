@@ -47,7 +47,7 @@ const AdminDashboard = (props) => {
   return (
     <>
       <nav className="dashboard-navbar">
-        <h1>RsvpFC</h1>
+        <Link to='/'><h1>RsvpFC</h1></Link>
         <h2 className='logout' onClick={props.handleLogout}>Logout</h2>
       </nav>
       <div className="links">

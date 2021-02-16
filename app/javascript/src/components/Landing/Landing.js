@@ -53,7 +53,7 @@ const Landing = () => {
                 </div>
                 <span className='display-message'>{displayMessage}</span>
                 <input onClick={registerMember} className="button" type="submit" value="Register"/>
-                <Link className="sign-up-link" to="/signup"><p>Have you not been accepted as a member?</p></Link>
+                <Link className="sign-up-link" to="/register"><p>Have you been accepted as a member?</p></Link>
             </div>
         </div>
     )
