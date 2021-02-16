@@ -1,17 +1,12 @@
 class SessionsController < ApplicationController
-    # skip_before_action :verify_authenticity_token
+    skip_before_action :verify_authenticity_token
 
     def create
-
-      
         @admin = Admin.find_by(username: session_params[:username])
-      
         if @admin && @admin.authenticate(session_params[:password])
           login!
           render json: {
-            logged_in: true,
-            current: current_admin, 
-            admin: @admin
+            logged_in: true
           }
         else
           render json: { 

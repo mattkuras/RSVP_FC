@@ -11,7 +11,7 @@ import {
   useRouteMatch
 } from "react-router-dom";
 
-const AdminDashboard = () => {
+const AdminDashboard = (props) => {
   const [requests, setRequests] = useState([])
   const [games, setGames] = useState([])
   const [members, setMembers] = useState([])
@@ -48,7 +48,7 @@ const AdminDashboard = () => {
     <>
       <nav className="dashboard-navbar">
         <h1>RsvpFC</h1>
-        <h2>Logout</h2>
+        <h2 className='logout' onClick={props.handleLogout}>Logout</h2>
       </nav>
       <div className="links">
         <h3 className="link-item"><Link to={`${url}/games`}>Current Matches</Link></h3>

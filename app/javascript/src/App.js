@@ -14,7 +14,7 @@ function App() {
   const [admin, setAdmin] = useState({})
 
   useEffect(() => {
-    // loginStatus()
+    loginStatus()
   }, [])
 
   const loginStatus = async () => {
@@ -28,32 +28,31 @@ function App() {
   }
 
   const handleLogin = (data) => {
-    setAdmin(data.admin)
+    // setAdmin(data.admin)
     setIsLoggedIn(true)
   }
   const handleLogout = () => {
     setIsLoggedIn(false)
-    console.log('clicked')
   }
 
   return (
     <Router>
       <Route exact path="/register" component={Register} />
       <Route exact path="/" component={Landing} />
-      <Route exact path="/admin" component={AdminLogin} />
-      <Route path="/admindashboard" component={AdminDashboard} />
-      {/* <Route exact path='/admindashboard'
+      {/* <Route exact path="/admin"><AdminLogin login={handleLogin}/></Route>  */}
+      {/* <Route path="/admindashboard" component={AdminDashboard} /> */}
+      <Route path='/admindashboard'
         render={props => (
-          <AdminDashboard {...props} handleLogin={handleLogin} handleLogout={handleLogout} loggedInStatus={isLoggedIn} />
+          <AdminDashboard {...props} loggedInStatus={isLoggedIn} handleLogout={handleLogout} />
         )}>
         {isLoggedIn ? null : <Redirect to="/admin" />}
       </Route>
       <Route exact path='/admin'
         render={props => (
-          <Admin {...props} handleLogin={handleLogin} loggedInStatus={isLoggedIn} />
+          <AdminLogin {...props} handleLogin={handleLogin} loggedInStatus={isLoggedIn} />
         )}>
         {isLoggedIn ? <Redirect to="/admindashboard" /> : null}
-      </Route> */}
+      </Route> 
     </Router>
   );
 }

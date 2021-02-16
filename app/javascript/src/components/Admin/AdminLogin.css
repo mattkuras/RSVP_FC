@@ -1,0 +1,40 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    width: 40vw;
+    margin: 0 auto;
+    align-items: center;
+    border: 1px solid #aaa;
+    border-radius: 25px;
+    box-shadow: -11px 11px 1px rgba(0, 0, 0, 0.3);
+    background-color: #333;
+  }
+  
+  .input-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  
+  label {
+    color: #fff;
+    font-size: 1.5rem;
+  }
+  
+  .input {
+    margin: 2rem 1rem;
+    width: 60%;
+  }
+  
+  h1 {
+    margin: 30px auto;
+    text-align: center;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .login-form {
+      width: 80vw;
+    }
+  }
+  
