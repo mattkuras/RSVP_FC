@@ -17,7 +17,13 @@
 }
 
 .email-input {
-  width: 180px;
+  width: 200px;
+  height: 40px;
+  font-size: 18px;
+}
+.email-label {
+  color: #000;
+  margin-right: 15px;
 }
 .container {
   font-family: "Quicksand", sans-serif;
@@ -48,7 +54,6 @@
   color: #fff;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
-
 
 .button:hover {
   cursor: pointer;

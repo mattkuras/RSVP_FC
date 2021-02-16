@@ -34,7 +34,7 @@ const Landing = () => {
         Axios.post('/rsvps', {rsvp})
         .then(resp => {
             if (resp.data.id != null){
-                setDisplayMessage('your spot has been reserved!')
+                setDisplayMessage('Your spot has been reserved!')
             } else {
                 setDisplayMessage(resp.data)
             }
@@ -48,7 +48,7 @@ const Landing = () => {
                 {/* add location, remaining capacity */}
                 <h3 className="game-time">{game.formatted_time}</h3>
                 <div className="input-container">
-                    <label htmlFor="email-registration">Register via Email: </label>
+                    <label className="email-label" for="email-registration">Register via Email: </label>
                     <input className="email-input" onChange={handleChange} type="text" name="email-registration" placeholder="Enter Email Here..." />
                 </div>
                 <span className='display-message'>{displayMessage}</span>
