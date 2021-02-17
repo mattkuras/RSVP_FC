@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'admins/create'
+  get 'admins/update'
   # devise_for :admins
   root 'home#index'
   get 'dashboard/data', to: 'home#dashboard'
@@ -11,9 +13,10 @@ Rails.application.routes.draw do
   resources :requests, only:[:index, :create, :show, :destroy] 
   resources :rsvps, only: [:create]
 
-  post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
-  get '/logged_in', to: 'sessions#is_logged_in?'
+  resource :admins, only: [:create]
+  post "/login", to: "sessions#login"
+  get "/auto_login", to: "sessions#auto_login"
+  get "/user_is_authed", to: "sessions#user_is_authed"
   
   resources :members, only: [:create, :index]
 

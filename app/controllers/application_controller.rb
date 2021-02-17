@@ -1,24 +1,41 @@
 class ApplicationController < ActionController::Base
-    skip_before_action :verify_authenticity_token
-    protect_from_forgery with: :exception
- 
-    helper_method :login!, :logged_in?, :current_admin, :authorized_admin?, :logout!
+    # before_action :require_login
 
-    def login!
-      session[:admin_id] = @admin.id
-    end
     def logged_in?
-      !!session[:admin_id]
+      !!session_admin
     end
-    def current_admin
-      @current_admin ||= Admin.find(session[:admin_id]) if session[:admin_id]
+
+    def require_login
+      render json: {message: 'please login'}, status: :unauthorized unless logged_in?
     end
-     def authorized_admin?
-       @admin == current_admin
-     end
-     def logout!
-       session.clear
-     end
+
+    def encode_token(payload)
+      JWT.encode(payload, 'mktrfc')
+    end
      
+    def session_admin
+      decoded_hash = decoded_token
+      if decoded_hash
+        admin_id = decoded_hash[0]['admin_id']
+        @admin = Admin.find_by(id: admin_id)
+      else
+        nil
+      end
+    end
+
+    def auth_header 
+      request.headers['Authorization']
+    end
+
+    def decoded_token
+      if auth_header
+        token = auth_header.split(' ')[1]
+        begin 
+          JWT.decode(token, 'mktrfc', true, algorithm: 'HS256')
+        rescue JWT::DecodeError
+          []
+        end
+      end
+    end 
 
 end

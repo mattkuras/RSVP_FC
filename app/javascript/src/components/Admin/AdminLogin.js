@@ -13,22 +13,26 @@ const AdminLogin = (props) => {
       username: username,
       password: password,
     };
-    axios
-      .post("/login", { admin }, { withCredentials: true })
-      .then((response) => {
-        if (response.data.logged_in) {
-          console.log(response.data);
-          props.handleLogin(response.data);
-          redirect();
-        } else {
-          setErrors({
-            errors: response.data.errors,
-          });
-          console.log(errors);
-        }
-      })
-      .catch((error) => console.log("api errors:", error));
-  };
+    axios.post("/login", { admin })
+    .then(resp => {
+      // console.log(resp.data.jwt, resp.data.admin)
+      localStorage.setItem("token", resp.data.jwt)
+      props.handleLogin(resp.data.admin)
+    })
+    setPassword('')
+    setUsername('')
+      }
+      // let config = {
+      //   headers: {
+      //     header1: value,
+      //   }
+      // }
+      
+      // let data = {
+      //   'HTTP_CONTENT_LANGUAGE': self.language
+      // }
+      
+      // axios.post(URL, data, config).then(...)
 
   const redirect = () => {
     props.history.push("/admindashboard");

@@ -9,20 +9,25 @@ import AdminDashboard from './components/Admin/AdminDashboard'
 
 
 function App() {
+  const [admin, setAdmin] = useState({})
 
   useEffect(() => {
   }, [])
 
-  const loginStatus = async () => {
-    await Axios.get('/logged_in',
-      { withCredentials: true })
-      .then(response => {
-        setAdmin(response.data.admin)
-        response.data.logged_in ? setIsLoggedIn(true) : setIsLoggedIn(false)
-      })
-      .catch(error => console.log('api errors:', error))
-  }
+  // const loginStatus = async () => {
+  //   await Axios.get('/logged_in',
+  //     { withCredentials: true })
+  //     .then(response => {
+  //       setAdmin(response.data.admin)
+  //       response.data.logged_in ? setIsLoggedIn(true) : setIsLoggedIn(false)
+  //     })
+  //     .catch(error => console.log('api errors:', error))
+  // }
 
+  const handleLogin = (admin) => {
+    console.log(admin)
+    setAdmin(admin)
+  }
   return (
     <Router>
       <Route exact path="/register" component={Register} />
@@ -31,13 +36,12 @@ function App() {
         render={props => (
           <AdminDashboard {...props} />
         )}>
-        {/* {isLoggedIn ? null : <Redirect to="/admin" />} */}
       </Route>
       <Route exact path='/admin'
         render={props => (
-          <AdminLogin {...props} />
+          <AdminLogin {...props} handleLogin={handleLogin} />
         )}>
-        {isLoggedIn ? <Redirect to="/admindashboard" /> : null}
+        {/* {isLoggedIn ? <Redirect to="/admindashboard" /> : null} */}
       </Route> 
     </Router>
   );
