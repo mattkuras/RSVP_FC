@@ -10,11 +10,7 @@ import AdminDashboard from './components/Admin/AdminDashboard'
 
 function App() {
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [admin, setAdmin] = useState({})
-
   useEffect(() => {
-    loginStatus()
   }, [])
 
   const loginStatus = async () => {
@@ -27,28 +23,19 @@ function App() {
       .catch(error => console.log('api errors:', error))
   }
 
-  const handleLogin = (data) => {
-    console.log(data)
-    // setAdmin(data.admin)
-    setIsLoggedIn(true)
-  }
-  const handleLogout = () => {
-    setIsLoggedIn(false)
-  }
-
   return (
     <Router>
       <Route exact path="/register" component={Register} />
       <Route exact path="/" component={Landing} />
       <Route path='/admindashboard'
         render={props => (
-          <AdminDashboard {...props} loggedInStatus={isLoggedIn} handleLogout={handleLogout} />
+          <AdminDashboard {...props} />
         )}>
         {/* {isLoggedIn ? null : <Redirect to="/admin" />} */}
       </Route>
       <Route exact path='/admin'
         render={props => (
-          <AdminLogin {...props} handleLogin={handleLogin} loggedInStatus={isLoggedIn} />
+          <AdminLogin {...props} />
         )}>
         {isLoggedIn ? <Redirect to="/admindashboard" /> : null}
       </Route> 

@@ -1,16 +1,5 @@
 class SessionsController < ApplicationController
 
-    def create
-      admin = Admin.where(username: params[:username]).first 
-      if admin&.valid_password?(params[:password])
-        render json: admin.as_json(only: [:username, :authentication_token], status: :created)
-      else 
-        head(:unauthorized)
-      end
-    end
-
-    def destroy
-    end
 
 
     # def create
