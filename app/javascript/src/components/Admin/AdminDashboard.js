@@ -23,19 +23,32 @@ const AdminDashboard = (props) => {
   }, [])
 
   const fetchGames = () => {
-    Axios.get('/games')
-    .then(resp => {
+  const token = localStorage.getItem("token")
+    Axios.get('/games', {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then(resp => {
       setGames(resp.data)
-    } )
+    })
   }
   const fetchRequests = () => {
-    Axios.get('/requests')
-    .then(resp => {
+  const token = localStorage.getItem("token")
+    Axios.get('/requests', {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then(resp => {
       setRequests(resp.data)
     } )
   }
   const fetchMembers = () => {
-    Axios.get('/members')
+    const token = localStorage.getItem("token")
+    Axios.get('/members', {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
     .then(resp => {
       setMembers(resp.data)
     } )

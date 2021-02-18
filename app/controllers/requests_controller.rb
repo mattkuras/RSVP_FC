@@ -1,6 +1,5 @@
 class RequestsController < ApplicationController
-  skip_before_action :verify_authenticity_token
-
+before_action :require_login, only: [:destroy, :index]
   def index
     requests = Request.all
     render json: requests
@@ -29,10 +28,7 @@ class RequestsController < ApplicationController
     request.destroy
     render json: "request has been deleted from dashboard"
   end
-  
-  def all
-    Request.all 
-  end
+
 
   private
 

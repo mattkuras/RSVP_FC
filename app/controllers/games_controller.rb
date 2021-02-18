@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  before_action :require_login, except: [:index, :current_game]
 
   def index
     games = Game.all.sort_by {|g| g.datetime}

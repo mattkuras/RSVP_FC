@@ -1,5 +1,4 @@
 class RsvpsController < ApplicationController
-  skip_before_action :verify_authenticity_token
 
   def index
     rsvps = Rsvp.all

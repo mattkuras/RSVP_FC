@@ -15,24 +15,20 @@ const AdminLogin = (props) => {
     };
     axios.post("/login", { admin })
     .then(resp => {
-      // console.log(resp.data.jwt, resp.data.admin)
-      localStorage.setItem("token", resp.data.jwt)
-      props.handleLogin(resp.data.admin)
+      console.log(resp)
+      if (resp.data.success) {
+        localStorage.setItem("token", resp.data.jwt)
+        props.handleLogin(resp.data.admin)
+        redirect()
+      }
+      else {
+        console.log(resp.data.failure)
+      }
+     
     })
     setPassword('')
     setUsername('')
       }
-      // let config = {
-      //   headers: {
-      //     header1: value,
-      //   }
-      // }
-      
-      // let data = {
-      //   'HTTP_CONTENT_LANGUAGE': self.language
-      // }
-      
-      // axios.post(URL, data, config).then(...)
 
   const redirect = () => {
     props.history.push("/admindashboard");

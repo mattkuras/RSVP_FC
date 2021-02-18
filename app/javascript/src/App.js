@@ -10,23 +10,33 @@ import AdminDashboard from './components/Admin/AdminDashboard'
 
 function App() {
   const [admin, setAdmin] = useState({})
+  const [loggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {
+    const token = localStorage.getItem("token")
+    if (token) {
+      Axios.get('/auto_login', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then(resp => {
+        setAdmin(resp.data)
+        setLoggedIn(true)
+        console.log(resp.data)
+      })
+    }
   }, [])
-
-  // const loginStatus = async () => {
-  //   await Axios.get('/logged_in',
-  //     { withCredentials: true })
-  //     .then(response => {
-  //       setAdmin(response.data.admin)
-  //       response.data.logged_in ? setIsLoggedIn(true) : setIsLoggedIn(false)
-  //     })
-  //     .catch(error => console.log('api errors:', error))
-  // }
 
   const handleLogin = (admin) => {
     console.log(admin)
+    setLoggedIn(true)
     setAdmin(admin)
+  }
+  const handleLogout = () => {
+    localStorage.clear()
+    setAdmin({})
+    setLoggedIn(false)
   }
   return (
     <Router>
@@ -34,14 +44,16 @@ function App() {
       <Route exact path="/" component={Landing} />
       <Route path='/admindashboard'
         render={props => (
-          <AdminDashboard {...props} />
+          <AdminDashboard {...props} handleLogout={handleLogout} />
         )}>
+        {loggedIn ? null : <Redirect to="/admin"/>}
+          
       </Route>
       <Route exact path='/admin'
         render={props => (
           <AdminLogin {...props} handleLogin={handleLogin} />
         )}>
-        {/* {isLoggedIn ? <Redirect to="/admindashboard" /> : null} */}
+        {loggedIn ? <Redirect to="/admindashboard" /> : null}
       </Route> 
     </Router>
   );
