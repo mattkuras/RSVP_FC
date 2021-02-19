@@ -11,7 +11,6 @@ class RequestsController < ApplicationController
   end
 
   def create
-    byebug
     request = Request.new(request_params)
     if Member.check_reference(request_params[:reference]) && request.original?
       if request.save
@@ -25,10 +24,9 @@ class RequestsController < ApplicationController
   end
 
   def destroy
-    byebug
-    request = Request.find_by(email: request_params[:email])
+    request = Request.find(params[:id])
     request.destroy
-    render json: "request has been deleted from dashboard"
+    render json: {message: "request has been deleted from dashboard", deleted: true}
   end
 
 

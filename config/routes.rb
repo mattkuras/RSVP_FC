@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :games
 
   resources :requests, only:[:index, :create, :show] 
-  delete '/requests', to: 'requests#destroy'
+  delete '/requests/:id', to: 'requests#destroy'
   resources :rsvps, only: [:create]
 
   resource :admins, only: [:create]

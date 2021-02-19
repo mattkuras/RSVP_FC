@@ -20,7 +20,7 @@ class MembersController < ApplicationController
       render json: member 
     else 
       byebug
-      render json: 'there was an error'
+      render json: {error: 'there was an error'}
     end 
   end
 
