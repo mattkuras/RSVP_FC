@@ -11,6 +11,20 @@ const Home = (props) => {
   const [capacity, setCapacity] = useState('')
   const [displayMessage, setDisplayMessage] = useState('')
 
+  const deleteMember = (e) => {
+    let id = e.target.id
+    Axios.delete(`/members/${id}`)
+    .then(resp => {
+      if (resp.data.success) {
+        let mems = props.members.filter(m => m.id != id)
+        props.delete(mems)
+        console.log('deleted!')
+      }
+      else {
+        console.log('it didnt delete')
+      }
+    })
+  }
 
   const ListMembers = () => {
     return <div className="member-list">
@@ -24,7 +38,7 @@ const Home = (props) => {
       </div>
       {props.members.map((m) => (
         <div className="member" key={m.id}>
-          <FaRegTrashAlt className="trash-icon edit-icons" />
+          <FaRegTrashAlt className="trash-icon edit-icons" id={m.id} onClick={deleteMember} />
           <h3>{m.email}</h3>
           <h3>{m.full_name}</h3>
           <h3>{m.reference}</h3>

@@ -23,7 +23,6 @@ function App() {
       .then(resp => {
         setAdmin(resp.data)
         setLoggedIn(true)
-        console.log(resp.data)
       })
     }
   }, [])

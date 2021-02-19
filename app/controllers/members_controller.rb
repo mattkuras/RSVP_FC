@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-before_action :require_login
+# before_action :require_login
 
   def index
     members = Member.all
@@ -12,21 +12,25 @@ before_action :require_login
   end
 
   def create
-    request = Request.find_by(id: params[:id])
+    request = Request.find_by(email: member_params[:email])
     member = request.accept 
     if member.save 
+      MemberMailer.welcome_member(member)
       request.destroy 
       render json: member 
     else 
       byebug
-      render json: 'there was an error'
+      render json: {error: 'there was an error'}
     end 
   end
 
   def destroy
     member = Member.find(params[:id])
-    member.destroy
-    render json: "member has been deleted"
+    if member.destroy
+      render json: {success: "member has been deleted"}
+    else 
+      render json: {error: member.error}
+    end
   end
 
 
