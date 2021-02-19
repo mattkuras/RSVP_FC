@@ -12,8 +12,17 @@
   color: #fff;
   box-shadow: 0 8px 6px -6px black;
 }
-.logout{
-  cursor: pointer; 
+
+.nav-h1 {
+  color: #fff;
+  text-decoration: none;
+}
+.logout {
+  cursor: pointer;
+}
+
+.logout:hover {
+  color: #ccc;
 }
 .links {
   font-family: "Quicksand", sans-serif;
@@ -26,6 +35,8 @@
 .link-item {
   padding-bottom: 30px;
   border-bottom: 2px solid transparent;
+  color: #000;
+  text-decoration: none;
 }
 
 .link-item:hover {

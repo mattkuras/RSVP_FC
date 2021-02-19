@@ -24,14 +24,14 @@ const Home = (props) => {
       </div>
       {props.members.map((m) => (
         <div className="member" key={m.id}>
-          <FaRegTrashAlt className="trash-icon" />
+          <FaRegTrashAlt className="trash-icon edit-icons" />
           <h3>{m.email}</h3>
           <h3>{m.full_name}</h3>
           <h3>{m.reference}</h3>
           <h3>2</h3>
-          <h3><AiOutlinePlusCircle className="icon" /> <AiOutlineMinusCircle className="icon" /></h3>
+          <h3 className="edit-icons"><AiOutlinePlusCircle className="icon" /> <AiOutlineMinusCircle className="icon" /></h3>
         </div>
-      ))}
+      // ))}
     </div>
   }
 
@@ -56,8 +56,8 @@ const Home = (props) => {
   return (
     <div className="home-container">
       <div className="create-game">
-        <h2>Enter new game here:</h2>
         <div className="game-input-container">
+          <h2>Enter new game here:</h2>
           <input className="game-info" type="text" placeholder="Enter Date Here" onChange={(e) => setDate(e.target.value)} />
           <input className="game-info" type="text" placeholder="Enter Time Here" onChange={(e) => setTime(e.target.value)} />
           <input className="game-info" type="text" placeholder="Enter Location Here" onChange={(e) => setLocation(e.target.value)} />
