@@ -31,7 +31,7 @@ const Home = (props) => {
           <h3>2</h3>
           <h3 className="edit-icons"><AiOutlinePlusCircle className="icon" /> <AiOutlineMinusCircle className="icon" /></h3>
         </div>
-      // ))}
+      ))}
     </div>
   }
 
