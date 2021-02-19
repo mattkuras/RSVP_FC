@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-before_action :require_login
+# before_action :require_login
 
   def index
     members = Member.all
@@ -12,9 +12,10 @@ before_action :require_login
   end
 
   def create
-    request = Request.find_by(id: params[:id])
+    request = Request.find_by(email: member_params[:email])
     member = request.accept 
     if member.save 
+      MemberMailer.welcome_member(member)
       request.destroy 
       render json: member 
     else 

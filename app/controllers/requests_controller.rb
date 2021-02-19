@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-before_action :require_login, only: [:destroy, :index]
+# before_action :require_login, only: [:destroy, :index]
   def index
     requests = Request.all
     render json: requests
@@ -11,8 +11,9 @@ before_action :require_login, only: [:destroy, :index]
   end
 
   def create
+    byebug
     request = Request.new(request_params)
-    if Member.check_reference(request_params[:reference])
+    if Member.check_reference(request_params[:reference]) && request.original?
       if request.save
         render json: request
       else
@@ -24,7 +25,8 @@ before_action :require_login, only: [:destroy, :index]
   end
 
   def destroy
-    request = Request.find(params[:id])
+    byebug
+    request = Request.find_by(email: request_params[:email])
     request.destroy
     render json: "request has been deleted from dashboard"
   end

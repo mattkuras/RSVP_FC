@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   get 'games/current', to: 'games#current_game'
   resources :games
 
-  resources :requests, only:[:index, :create, :show, :destroy] 
+  resources :requests, only:[:index, :create, :show] 
+  delete '/requests', to: 'requests#destroy'
   resources :rsvps, only: [:create]
 
   resource :admins, only: [:create]
