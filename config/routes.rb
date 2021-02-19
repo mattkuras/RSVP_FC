@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#login"
   get "/auto_login", to: "sessions#auto_login"
   
-  resources :members, only: [:create, :index]
+  resources :members, only: [:create, :index, :destroy]
 
   get '*path', to: 'home#index', via: :all
 

@@ -26,8 +26,11 @@ class MembersController < ApplicationController
 
   def destroy
     member = Member.find(params[:id])
-    member.destroy
-    render json: "member has been deleted"
+    if member.destroy
+      render json: {success: "member has been deleted"}
+    else 
+      render json: {error: member.error}
+    end
   end
 
 

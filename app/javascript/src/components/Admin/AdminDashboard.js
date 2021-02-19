@@ -70,7 +70,7 @@ const AdminDashboard = (props) => {
       </div>
 
       <Switch>
-        <Route exact path={path}><Home members={members}/></Route>
+        <Route exact path={path}><Home members={members} delete={setMembers}/></Route>
         <Route path={`${path}/games`}><Games games={games}/></Route>
         <Route path={`${path}/requests`}><Requests requests={requests} delete={setRequests}/></Route>
       </Switch>
