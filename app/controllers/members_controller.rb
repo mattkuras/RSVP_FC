@@ -15,11 +15,10 @@ before_action :require_login
     request = Request.find_by(email: member_params[:email])
     member = request.accept 
     if member.save 
-      # MemberMailer.welcome_member(member)
+      MemberMailer.welcome_member(member).deliver_now
       request.destroy 
       render json: member 
     else 
-      byebug
       render json: {error: 'there was an error'}
     end 
   end
