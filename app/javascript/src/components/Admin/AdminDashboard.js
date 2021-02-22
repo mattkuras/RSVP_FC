@@ -22,8 +22,9 @@ const AdminDashboard = (props) => {
     fetchMembers()
   }, [])
 
-  const fetchGames = () => {
   const token = localStorage.getItem("token")
+
+  const fetchGames = () => {
     Axios.get('/games', {
       headers: {
         Authorization: `Bearer ${token}`
@@ -33,7 +34,6 @@ const AdminDashboard = (props) => {
     })
   }
   const fetchRequests = () => {
-  const token = localStorage.getItem("token")
     Axios.get('/requests', {
       headers: {
         Authorization: `Bearer ${token}`
@@ -43,7 +43,6 @@ const AdminDashboard = (props) => {
     } )
   }
   const fetchMembers = () => {
-    const token = localStorage.getItem("token")
     Axios.get('/members', {
       headers: {
         Authorization: `Bearer ${token}`
@@ -71,7 +70,7 @@ const AdminDashboard = (props) => {
 
       <Switch>
         <Route exact path={path}><Home members={members} delete={setMembers}/></Route>
-        <Route path={`${path}/games`}><Games games={games}/></Route>
+        <Route path={`${path}/games`}><Games games={games} delete={setGames}/></Route>
         <Route path={`${path}/requests`}><Requests requests={requests} delete={setRequests}/></Route>
       </Switch>
     </>

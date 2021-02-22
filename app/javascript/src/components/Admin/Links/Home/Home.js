@@ -11,9 +11,15 @@ const Home = (props) => {
   const [capacity, setCapacity] = useState('')
   const [displayMessage, setDisplayMessage] = useState('')
 
+  const token = localStorage.getItem("token")
+
   const deleteMember = (e) => {
     let id = e.target.id
-    Axios.delete(`/members/${id}`)
+    Axios.delete(`/members/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
     .then(resp => {
       if (resp.data.success) {
         let mems = props.members.filter(m => m.id != id)
@@ -48,13 +54,17 @@ const Home = (props) => {
       ))}
     </div>
   }
-
   const handleSubmit = () => {
     let datetime = `${date} ${time}`
     // date and time togethe should be a string in this format "nov 30 2021 10:00pm"
     let game = { datetime, location, capacity }
-    Axios.post('/games', { game })
+    Axios.post('/games', { game }, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
       .then(resp => {
+        console.log(resp)
         if (resp.statusText == 'OK') {
           setDisplayMessage('your game has been created')
         } else {

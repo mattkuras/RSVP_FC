@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  
   before_action :require_login, except: [:index, :current_game]
 
   def index
@@ -32,7 +33,7 @@ class GamesController < ApplicationController
   def destroy
     game = Game.find_by(id: params[:id])
     if game.destroy
-      render json: 'game has been deleted'
+      render json: {success: 'game has been deleted'}
     else
       render json: game.errors
     end

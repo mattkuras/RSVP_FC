@@ -33,8 +33,9 @@ const Landing = () => {
         let rsvp = {email, game_id}
         Axios.post('/rsvps', {rsvp})
         .then(resp => {
-            if (resp.data.id != null){
+            if (resp.data.id){
                 setDisplayMessage('Your spot has been reserved!')
+                setMemberEmail('')
             } else {
                 setDisplayMessage(resp.data)
             }

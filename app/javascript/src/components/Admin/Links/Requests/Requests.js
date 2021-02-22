@@ -5,10 +5,15 @@ import Axios from 'axios'
 
 const Requests = (props) => {
   const requests = props.requests
+  const token = localStorage.getItem("token")
   
   const accept = (e) => {
     let member = {email: e.target.id}
-    Axios.post('/members', member)
+    Axios.post('/members', member, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
     .then(resp => {
       if (resp.data.id) {
         let reqs = props.requests.filter(r => r.email != member.email)
@@ -22,7 +27,11 @@ const Requests = (props) => {
   }
   const deny = (e) => {
     let request = {id: e.target.id}
-    Axios.delete(`/requests/${request.id}`, request)
+    Axios.delete(`/requests/${request.id}`, request, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
       .then(resp => {
         if (resp.data.deleted) {
           let reqs = props.requests.filter(r => r.id != request.id)

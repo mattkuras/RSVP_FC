@@ -1,4 +1,5 @@
 class RsvpsController < ApplicationController
+  before_action :require_login, except: [:create]
 
   def index
     rsvps = Rsvp.all
@@ -11,7 +12,7 @@ class RsvpsController < ApplicationController
         rsvp.member_id = Member.find_by(email: rsvp_params[:email]).id
         rsvp.game_id = rsvp_params[:game_id]
         if Rsvp.already_exists?(rsvp)
-            render json: 'you are already registered for this game'
+            render json: "#{rsvp.member.first_name} is already registered for this game"
         else
             render json: rsvp if rsvp.save
         end
