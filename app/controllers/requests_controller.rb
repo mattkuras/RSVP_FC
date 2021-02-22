@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-before_action :require_login, except: [:create]
+before_action :require_login, except: [:create, :destroy]
   def index
     requests = Request.all
     render json: requests
@@ -15,7 +15,6 @@ before_action :require_login, except: [:create]
     if Member.check_reference(request_params[:reference]) && request.original?
       if request.save
         render json: request
-        render json: "there was an error creating your request"
       end
     elsif request.original? == false 
       render json: "you're already a member"
