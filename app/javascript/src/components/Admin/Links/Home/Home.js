@@ -65,8 +65,9 @@ const Home = (props) => {
     })
       .then(resp => {
         console.log(resp)
-        if (resp.statusText == 'OK') {
+        if (resp.data.id) {
           setDisplayMessage('your game has been created')
+          props.setGames(games => [...games, resp.data])
         } else {
           setDisplayMessage(`${resp.data}`)
         }

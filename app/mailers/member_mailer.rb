@@ -1,6 +1,6 @@
 class MemberMailer < ApplicationMailer
     def welcome_member(member)
         
-        mail(to: 'mattkuras@gmail.com', subject: "You got a new order!")
+        mail(to: member.email, subject: "Welcome to the Club!")
     end
 end
