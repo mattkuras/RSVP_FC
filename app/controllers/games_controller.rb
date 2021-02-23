@@ -19,6 +19,7 @@ class GamesController < ApplicationController
   def create
     game = Game.new(game_params)
     if game.save
+      GameMailer.new_game(game).deliver_later
       render json: game
     else
       render json: "errrrror"
