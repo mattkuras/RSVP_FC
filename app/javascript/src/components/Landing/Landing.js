@@ -49,7 +49,7 @@ const Landing = () => {
                 {/* add location, remaining capacity */}
                 <h3 className="game-time">{game.formatted_time}</h3>
                 <div className="input-container">
-                    <label className="email-label" for="email-registration">Register via Email: </label>
+                    <label className="email-label" for="email-registration">Check RSVP Status via Email </label>
                     <input className="email-input" onChange={handleChange} type="text" name="email-registration" placeholder="Enter Email Here..." />
                 </div>
                 <span className='display-message'>{displayMessage}</span>

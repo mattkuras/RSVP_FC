@@ -15,7 +15,7 @@ before_action :require_login
     request = Request.find_by(email: member_params[:email])
     member = request.accept 
     if member.save 
-      MemberMailer.welcome_member(member).deliver_now
+      # MemberMailer.welcome_member(member).deliver_now
       request.destroy 
       render json: member 
     else 
@@ -40,7 +40,8 @@ before_action :require_login
       :first_name,
       :last_name,
       :email,
-      :reference
+      :reference, 
+      :password
     )
   end
 end

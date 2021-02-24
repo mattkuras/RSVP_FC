@@ -8,11 +8,13 @@ const SignUp = () => {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [reference, setReference] = useState('')
+    const [password, setPassword] = useState('')
 
     const handleSubmit = (event) => {
         event.preventDefault()
         let request = {
             email: email,
+            password: password,
             first_name: firstName,
             last_name: lastName,
             reference: reference
@@ -26,6 +28,7 @@ const SignUp = () => {
         setEmail('')
         setFirstName('')
         setLastName('')
+        setPassword('')
     };
 
     return (
@@ -44,6 +47,11 @@ const SignUp = () => {
                 <div className="register-input-container">
                     <label for="email">Email Address: </label>
                     <input name="email" className="input" type="text" placeholder="Enter Email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                </div>
+
+                <div className="register-input-container">
+                    <label for="password">Password: </label>
+                    <input name="password" className="input" type="password" placeholder="Enter Password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
 
                 <div className="register-input-container">

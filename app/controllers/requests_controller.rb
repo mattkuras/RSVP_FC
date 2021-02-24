@@ -37,7 +37,8 @@ before_action :require_login, except: [:create, :destroy]
       :first_name,
       :last_name,
       :email,
-      :reference
+      :reference, 
+      :password
     )
   end
 end
