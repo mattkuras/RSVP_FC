@@ -6,8 +6,8 @@ import Axios from 'axios'
 
 const Home = (props) => {
   const [location, setLocation] = useState("")
-  const [date, setDate] = useState([])
-  const [time, setTime] = useState([])
+  const [date, setDate] = useState('')
+  const [time, setTime] = useState('')
   const [capacity, setCapacity] = useState('')
   const [displayMessage, setDisplayMessage] = useState('')
 
@@ -20,16 +20,16 @@ const Home = (props) => {
         Authorization: `Bearer ${token}`
       }
     })
-    .then(resp => {
-      if (resp.data.success) {
-        let mems = props.members.filter(m => m.id != id)
-        props.delete(mems)
-        console.log('deleted!')
-      }
-      else {
-        console.log('it didnt delete')
-      }
-    })
+      .then(resp => {
+        if (resp.data.success) {
+          let mems = props.members.filter(m => m.id != id)
+          props.delete(mems)
+          console.log('deleted!')
+        }
+        else {
+          console.log('it didnt delete')
+        }
+      })
   }
 
   const ListMembers = () => {
@@ -83,10 +83,10 @@ const Home = (props) => {
       <div className="create-game">
         <div className="game-input-container">
           <h2>Enter new game here:</h2>
-          <input className="game-info" type="text" placeholder="Enter Date Here" onChange={(e) => setDate(e.target.value)} />
-          <input className="game-info" type="text" placeholder="Enter Time Here" onChange={(e) => setTime(e.target.value)} />
-          <input className="game-info" type="text" placeholder="Enter Location Here" onChange={(e) => setLocation(e.target.value)} />
-          <input className="game-info" type="text" placeholder="Enter Capacity" onChange={(e) => setCapacity(e.target.value)} />
+          <input className="game-info" type="text" placeholder="Enter Date Here" onChange={(e) => setDate(e.target.value)} value={date} />
+          <input className="game-info" type="text" placeholder="Enter Time Here" onChange={(e) => setTime(e.target.value)} value={time}/>
+          <input className="game-info" type="text" placeholder="Enter Location Here" onChange={(e) => setLocation(e.target.value)} value={location} />
+          <input className="game-info" type="text" placeholder="Enter Capacity" onChange={(e) => setCapacity(e.target.value)} value={capacity} />
           <input className="create-btn" type="submit" value="Create" onClick={handleSubmit} />
         </div>
       </div>
