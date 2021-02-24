@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import "./AdminLogin.css";
+import "./MemberLogin.css";
 import axios from "axios";
 
-const AdminLogin = (props) => {
-  const [username, setUsername] = useState("");
+const MemberLogin = (props) => {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     let user = {
-      username: username,
+      email: email,
       password: password,
     };
     axios.post("/login", { user })
@@ -27,26 +26,26 @@ const AdminLogin = (props) => {
      
     })
     setPassword('')
-    setUsername('')
+    setEmail('')
       }
 
   const redirect = () => {
-    props.history.push("/admindashboard");
+    props.history.push("/memberdashboard");
   };
 
   return (
     <div className="login-page-container">
-      <h1>Admin Login</h1>
+      <h1>Member Login</h1>
       <form className="login-form" onSubmit={handleSubmit}>
         <div className="input-container">
-          <label for="username">Username: </label>
+          <label for="email">Email: </label>
           <input
             className="input"
             type="text"
-            placeholder="Enter Username"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter Email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="input-container">
@@ -66,4 +65,4 @@ const AdminLogin = (props) => {
   );
 };
 
-export default AdminLogin;
+export default MemberLogin;

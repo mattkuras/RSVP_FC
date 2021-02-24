@@ -1,5 +1,6 @@
 class MembersController < ApplicationController
-before_action :require_login 
+  before_action :require_admin_login, except: [:show, :create, :destroy]
+  before_action :require_admin_or_member_login, only: [:index]
 
   def index
     members = Member.all
@@ -13,25 +14,24 @@ before_action :require_login
 
   def create
     request = Request.find_by(email: member_params[:email])
-    member = request.accept 
-    if member.save 
+    member = request.accept
+    if member.save
       # MemberMailer.welcome_member(member).deliver_now
-      request.destroy 
-      render json: member 
-    else 
-      render json: {error: 'there was an error'}
-    end 
+      request.destroy
+      render json: member
+    else
+      render json: { error: "there was an error" }
+    end
   end
 
   def destroy
     member = Member.find(params[:id])
     if member.destroy
-      render json: {success: "member has been deleted"}
-    else 
-      render json: {error: member.error}
+      render json: { success: "member has been deleted" }
+    else
+      render json: { error: member.error }
     end
   end
-
 
   private
 
@@ -40,7 +40,7 @@ before_action :require_login
       :first_name,
       :last_name,
       :email,
-      :reference, 
+      :reference,
       :password
     )
   end

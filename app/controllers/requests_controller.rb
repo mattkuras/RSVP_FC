@@ -1,5 +1,6 @@
 class RequestsController < ApplicationController
-before_action :require_login, except: [:create, :destroy]
+  before_action :require_admin_login, only: [:index, :show, :destroy]
+
   def index
     requests = Request.all
     render json: requests

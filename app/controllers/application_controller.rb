@@ -2,12 +2,18 @@ class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
     
 
-    def logged_in?
+    def admin_logged_in?
       !!session_admin
     end
+    def admin_or_member_logged_in?
+      !!session_member || !!session_admin
+    end
 
-    def require_login
-      render json: {message: 'please login'}, status: :unauthorized unless logged_in?
+    def require_admin_login
+      render json: {message: 'please login'}, status: :unauthorized unless admin_logged_in?
+    end
+    def require_admin_or_member_login
+      render json: {message: 'please login'}, status: :unauthorized unless admin_or_member_logged_in?
     end
 
     def encode_token(payload)
@@ -17,8 +23,17 @@ class ApplicationController < ActionController::Base
     def session_admin
       decoded_hash = decoded_token
       if decoded_hash
-        admin_id = decoded_hash[0]['admin_id']
-        @admin = Admin.find_by(id: admin_id)
+        id = decoded_hash[0]['user_id']
+        @admin = Admin.find_by(id: id) 
+      else
+        nil
+      end
+    end
+    def session_member
+      decoded_hash = decoded_token
+      if decoded_hash
+        id = decoded_hash[0]['user_id']
+        @member = Member.find_by(id: id)
       else
         nil
       end

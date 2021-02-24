@@ -1,5 +1,7 @@
 class RsvpsController < ApplicationController
-  before_action :require_login, except: [:create]
+  before_action :require_admin_login, only: [:create]
+  before_action :require_admin_or_member_login, only: [:delete, :index]
+
 
   def index
     rsvps = Rsvp.all

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :rsvps, only: [:create]
 
   resource :admins, only: [:create]
-  post "/login", to: "sessions#admin_login"
+  post "/login", to: "sessions#login"
   get "/auto_login", to: "sessions#auto_login"
   
   resources :members, only: [:create, :index, :destroy]

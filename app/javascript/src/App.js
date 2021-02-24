@@ -3,13 +3,15 @@ import './App.css';
 import { Redirect, Route, BrowserRouter as Router } from "react-router-dom"
 import Axios from 'axios'
 import Register from './components/Homepage/Register'
-import Landing from './components/Landing/Landing'
+import Landing from './components/Homepage/Landing/Landing'
 import AdminLogin from './components/Admin/AdminLogin'
 import AdminDashboard from './components/Admin/AdminDashboard'
+import MemberDashboard from './components/Member/MemberDashboard'
+import MemberLogin from './components/Member/MemberLogin'
 
 
 function App() {
-  const [admin, setAdmin] = useState({})
+  const [user, setUser] = useState({})
   const [loggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {
@@ -27,14 +29,14 @@ function App() {
     }
   }, [])
 
-  const handleLogin = (admin) => {
-    console.log(admin)
+  const handleLogin = (user) => {
+    console.log(user)
     setLoggedIn(true)
-    setAdmin(admin)
+    setUser(user)
   }
   const handleLogout = () => {
     localStorage.clear()
-    setAdmin({})
+    setUser({})
     setLoggedIn(false)
   }
   return (
@@ -45,14 +47,27 @@ function App() {
         render={props => (
           <AdminDashboard {...props} handleLogout={handleLogout} />
         )}>
-        {loggedIn ? null : <Redirect to="/admin"/>}
+        {loggedIn ? null : <Redirect to="/adminlogin"/>}
           
       </Route>
-      <Route exact path='/admin'
+      <Route exact path='/adminlogin'
         render={props => (
           <AdminLogin {...props} handleLogin={handleLogin} />
         )}>
         {loggedIn ? <Redirect to="/admindashboard" /> : null}
+      </Route>  
+      <Route path='/memberdashboard'
+        render={props => (
+          <MemberDashboard {...props} handleLogout={handleLogout} />
+        )}>
+        {loggedIn ? null : <Redirect to="/memberlogin"/>}
+          
+      </Route>
+      <Route exact path='/memberlogin'
+        render={props => (
+          <MemberLogin {...props} handleLogin={handleLogin} />
+        )}>
+        {loggedIn ? <Redirect to="/memberdashboard" /> : null}
       </Route> 
     </Router>
   );
