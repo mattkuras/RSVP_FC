@@ -31,6 +31,16 @@ class GamesController < ApplicationController
     render json: game
   end
 
+  def update 
+    game = Game.find_by(id: params[:id])
+    game.update(game_params)
+    if game.save 
+      render json: {game: game, message: 'the game has been updated'}
+    else 
+      render json: {errors: game.errors}
+    end
+  end
+
   def destroy
     game = Game.find_by(id: params[:id])
     if game.destroy
