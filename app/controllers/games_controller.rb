@@ -36,6 +36,7 @@ class GamesController < ApplicationController
     game.update(game_params)
     if game.save 
       render json: {game: game, success: 'the game has been updated'}
+      # GameMailer.update_game(game).deliver_later
     else 
       render json: {errors: game.errors}
     end
@@ -43,8 +44,11 @@ class GamesController < ApplicationController
 
   def destroy
     game = Game.find_by(id: params[:id])
+    time = game.formatted_time
+    members = game.members.pluck(:email)
     if game.destroy
       render json: {success: 'game has been deleted'}
+      # GameMailer.cancel_game(time, members).deliver_later
     else
       render json: game.errors
     end
