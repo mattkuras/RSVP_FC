@@ -35,7 +35,7 @@ class GamesController < ApplicationController
     game = Game.find_by(id: params[:id])
     game.update(game_params)
     if game.save 
-      render json: {game: game, message: 'the game has been updated'}
+      render json: {game: game, success: 'the game has been updated'}
     else 
       render json: {errors: game.errors}
     end

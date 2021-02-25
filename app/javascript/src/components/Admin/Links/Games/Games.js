@@ -2,7 +2,7 @@ import React from "react"
 import {
   Switch,
   Route,
-  useParams,
+  useHistory,
   Link,
   useRouteMatch
 } from "react-router-dom";
@@ -13,10 +13,11 @@ import Axios from 'axios'
 const Games = (props) => {
   const games = props.games
   const token = localStorage.getItem("token")
+  let history = useHistory();
 
 
-  const deleteGame = () => {
-    let id = e.target.id
+  const deleteGame = (e) => {
+   let id = e.target.id
     Axios.delete(`/games/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`
@@ -24,6 +25,7 @@ const Games = (props) => {
     })
       .then(resp => {
         if (resp.data.success) {
+          history.push(`${url}`);
           let gs = games.filter(g => g.id != id)
           props.delete(gs)
           console.log('deleted!')
@@ -51,7 +53,7 @@ const Games = (props) => {
           <GamesList />
         </Route>
         <Route path={`${path}/:gameId`}>
-          <Game games={games}/>
+          <Game games={games} deleteGame={deleteGame}/>
         </Route>
       </Switch>
 

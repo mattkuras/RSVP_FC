@@ -19,7 +19,7 @@ const SignUp = () => {
             last_name: lastName,
             reference: reference
         }
-        Axios.post('/requests', { request }, { withCredentials: true })
+        Axios.post('/requests', { request })
             .then(response => {
                 console.log(response)
             })

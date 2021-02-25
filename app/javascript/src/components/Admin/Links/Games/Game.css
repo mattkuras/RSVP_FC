@@ -1,0 +1,14 @@
+.members-attending p  {
+    text-align: center;
+}
+.members-attending h2  {
+    text-align: center;
+}
+.game-container {
+    border: solid black .5px;
+}
+
+.edit-game button {
+    width: 15px;
+    height: 10px;
+}
