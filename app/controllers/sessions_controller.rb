@@ -1,8 +1,9 @@
 class SessionsController < ApplicationController
 
   def auto_login
-    if session_admin
-      render json: session_admin
+    if user = session_admin || session_member
+      render json: user
+
     else
       render json: { errors: "no admin logged in" }
     end

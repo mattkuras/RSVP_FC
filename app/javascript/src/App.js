@@ -23,7 +23,7 @@ function App() {
         }
       })
       .then(resp => {
-        setAdmin(resp.data)
+        setUser(resp.data)
         setLoggedIn(true)
       })
     }

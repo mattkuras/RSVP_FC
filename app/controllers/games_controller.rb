@@ -1,8 +1,7 @@
 class GamesController < ApplicationController
   
   before_action :require_admin_login, except: [:index, :current_game]
-  before_action :require_admin_or_member_login, only: [:index, :current_game]
-
+  before_action :require_admin_or_member_login, only: [:index]
   def index
     games = Game.all.sort_by {|g| g.datetime}
     render json: games
