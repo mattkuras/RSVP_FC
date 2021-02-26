@@ -2,6 +2,7 @@ import React from "react"
 import "./Requests.css"
 import { VscThumbsdown, VscThumbsup } from 'react-icons/vsc'
 import Axios from 'axios'
+import MemberDashboard from "../../../Member/MemberDashboard"
 
 const Requests = (props) => {
   const requests = props.requests
@@ -17,7 +18,8 @@ const Requests = (props) => {
     .then(resp => {
       if (resp.data.id) {
         let reqs = props.requests.filter(r => r.email != member.email)
-        props.delete(reqs)
+        props.setRequests(reqs)
+        props.setMembers(members => [...members, resp.data]  )
         console.log('created!')
       }
       else {
@@ -35,7 +37,7 @@ const Requests = (props) => {
       .then(resp => {
         if (resp.data.deleted) {
           let reqs = props.requests.filter(r => r.id != request.id)
-          props.delete(reqs)
+          props.setRequests(reqs)
           console.log('deleted!')
         }
         else {

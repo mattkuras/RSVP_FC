@@ -27,11 +27,11 @@ const Landing = () => {
        setMemberEmail(e.target.value)
     }
 
-    const registerMember = () => {
+    const checkRsvpStatus = () => {
         let game_id = game.id  
         let email = memberEmail
         let rsvp = {email, game_id}
-        Axios.post('/rsvps', {rsvp})
+        Axios.post('/rsvps/status', {rsvp})
         .then(resp => {
             if (resp.data.id){
                 setDisplayMessage('Your spot has been reserved!')
@@ -42,6 +42,22 @@ const Landing = () => {
         }
         )
     }
+
+    // const registerMember = () => {
+    //     let game_id = game.id  
+    //     let email = memberEmail
+    //     let rsvp = {email, game_id}
+    //     Axios.post('/rsvps', {rsvp})
+    //     .then(resp => {
+    //         if (resp.data.id){
+    //             setDisplayMessage('Your spot has been reserved!')
+    //             setMemberEmail('')
+    //         } else {
+    //             setDisplayMessage(resp.data)
+    //         }
+    //     }
+    //     )
+    // }
     return (
         <div className="body">
             <div className="container">
@@ -53,7 +69,7 @@ const Landing = () => {
                     <input className="email-input" onChange={handleChange} type="text" name="email-registration" placeholder="Enter Email Here..." />
                 </div>
                 <span className='display-message'>{displayMessage}</span>
-                <input onClick={registerMember} className="button" type="submit" value="Register"/>
+                <input onClick={checkRsvpStatus} className="button" type="submit" value="Register"/>
                 <Link className="sign-up-link" to="/register"><p>Have you been accepted as a member?</p></Link>
             </div>
         </div>

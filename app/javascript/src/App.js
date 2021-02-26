@@ -11,7 +11,8 @@ import MemberLogin from './components/Member/MemberLogin'
 
 
 function App() {
-  const [user, setUser] = useState({})
+  const [admin, setAdmin] = useState()
+  const [member, setMember] = useState()
   const [loggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {
@@ -22,21 +23,33 @@ function App() {
           Authorization: `Bearer ${token}`
         }
       })
-      .then(resp => {
-        setUser(resp.data)
-        setLoggedIn(true)
-      })
+        .then(resp => {
+          if (resp.data.username) {
+            setAdmin(resp.data)
+            setLoggedIn(true)
+          }
+          else {
+            setMember(resp.data)
+            setLoggedIn(true)
+          }
+        })
     }
   }, [])
 
   const handleLogin = (user) => {
-    console.log(user)
-    setLoggedIn(true)
-    setUser(user)
+    if (user.username) {
+      setAdmin(user)
+      setLoggedIn(true)
+    }
+    else {
+      setMember(user)
+      setLoggedIn(true)
+    }
   }
   const handleLogout = () => {
     localStorage.clear()
-    setUser({})
+    setAdmin({})
+    setMember({})
     setLoggedIn(false)
   }
   return (
@@ -45,30 +58,30 @@ function App() {
       <Route exact path="/" component={Landing} />
       <Route path='/admindashboard'
         render={props => (
-          <AdminDashboard {...props} handleLogout={handleLogout} />
+          <AdminDashboard {...props} admin={admin} handleLogout={handleLogout} />
         )}>
-        {loggedIn ? null : <Redirect to="/adminlogin"/>}
-          
+        {loggedIn && admin ? null : <Redirect to="/adminlogin" />}
+
       </Route>
       <Route exact path='/adminlogin'
         render={props => (
           <AdminLogin {...props} handleLogin={handleLogin} />
         )}>
-        {loggedIn ? <Redirect to="/admindashboard" /> : null}
-      </Route>  
-      <Route path='/memberdashboard'
-        render={props => (
-          <MemberDashboard {...props} handleLogout={handleLogout} />
-        )}>
-        {loggedIn ? null : <Redirect to="/memberlogin"/>}
-          
+        {loggedIn && admin ? <Redirect to="/admindashboard" /> : null}
       </Route>
-      <Route exact path='/memberlogin'
+      <Route path='/dashboard'
+        render={props => (
+          <MemberDashboard {...props} member={member} handleLogout={handleLogout} />
+        )}>
+        {loggedIn && member ? null : <Redirect to="/login" />}
+
+      </Route>
+      <Route exact path='/login'
         render={props => (
           <MemberLogin {...props} handleLogin={handleLogin} />
         )}>
-        {loggedIn ? <Redirect to="/memberdashboard" /> : null}
-      </Route> 
+        {loggedIn && member ? <Redirect to="/dashboard" /> : null}
+      </Route>
     </Router>
   );
 }

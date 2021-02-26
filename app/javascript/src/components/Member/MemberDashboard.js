@@ -45,7 +45,7 @@ const MemberDashboard = (props) => {
       </div>
 
       <Switch>
-        <Route path={`${path}/games`}><Games games={games} delete={setGames}/></Route>
+        <Route path={`${path}/games`}><Games member={props.member} games={games} setGames={setGames}/></Route>
       </Switch>
     </>
   );

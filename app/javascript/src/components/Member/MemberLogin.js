@@ -30,7 +30,7 @@ const MemberLogin = (props) => {
       }
 
   const redirect = () => {
-    props.history.push("/memberdashboard");
+    props.history.push("/dashboard");
   };
 
   return (

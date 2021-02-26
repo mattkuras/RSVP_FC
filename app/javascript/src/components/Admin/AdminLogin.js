@@ -5,7 +5,6 @@ import axios from "axios";
 const AdminLogin = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -15,7 +14,6 @@ const AdminLogin = (props) => {
     };
     axios.post("/login", { user })
     .then(resp => {
-      console.log(resp)
       if (resp.data.success) {
         localStorage.setItem("token", resp.data.jwt)
         props.handleLogin(resp.data.user)

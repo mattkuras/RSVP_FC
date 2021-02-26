@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   delete '/requests/:id', to: 'requests#destroy'
   
   resources :rsvps, only: [:create]
+  post '/cancelrsvp', to: 'rsvps#cancel'
+  post '/rsvps/status', to: 'rsvps#get_rsvp_status'
 
   resource :admins, only: [:create]
   post "/login", to: "sessions#login"
