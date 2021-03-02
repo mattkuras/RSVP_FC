@@ -19,7 +19,7 @@ const Games = (props) => {
       .then(resp => {
         if (resp.data.success) {
           console.log(resp.data)
-          redirect()
+          props.fetchGames()
         }
         else {
           console.log(resp.data)
@@ -39,7 +39,7 @@ const Games = (props) => {
       .then(resp => {
         if (resp.data.success) {
           console.log(resp.data)
-          redirect()
+          props.fetchGames()
         }
         else {
           console.log(resp.data)

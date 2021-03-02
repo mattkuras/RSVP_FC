@@ -27,7 +27,7 @@ const MemberDashboard = (props) => {
       setGames(resp.data)
     })
   }
- 
+
 
 
   let { path, url } = useRouteMatch();
@@ -45,7 +45,12 @@ const MemberDashboard = (props) => {
       </div>
 
       <Switch>
-        <Route path={`${path}/games`}><Games member={props.member} games={games} setGames={setGames}/></Route>
+        <Route path={`${path}/games`}>
+          <Games member={props.member}
+            fetchGames={fetchGames}
+            games={games}
+            setGames={setGames} />
+        </Route>
       </Switch>
     </>
   );
