@@ -7,4 +7,5 @@ class Rsvp < ApplicationRecord
   end
 
 
+
 end
