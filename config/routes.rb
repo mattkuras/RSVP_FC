@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :games
 
   resources :requests, only:[:index, :create, :show] 
+  post '/requests/waitlist', to: 'requests#waitlist'
   delete '/requests/:id', to: 'requests#destroy'
   
   resources :rsvps, only: [:create]

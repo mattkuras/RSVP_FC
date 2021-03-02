@@ -1,3 +1,6 @@
 .thumbs {
     cursor: pointer;
 }
+.confirmation-message div {
+    cursor: pointer;
+}

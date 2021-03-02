@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :require_admin_login, only: [:index, :show, :destroy]
+  before_action :require_admin_login, only: [:index, :show, :waitlist]
 
   def index
     requests = Request.all
@@ -30,6 +30,18 @@ class RequestsController < ApplicationController
     render json: {message: "request has been deleted from dashboard", deleted: true}
   end
 
+  def waitlist
+    request = Request.find_by(id: request_params[:id])
+    waitlisted_request = request.waitlist
+    if waitlisted_request.save
+      # WaitlistMailer.welcome_waitlisted_member(waitlisted_request).deliver_now
+      request.destroy
+      render json: {success: waitlisted_request}
+    else
+      render json: { error: "there was an error" }
+    end
+  end
+
 
   private
 
@@ -39,7 +51,8 @@ class RequestsController < ApplicationController
       :last_name,
       :email,
       :reference, 
-      :password
+      :password,
+      :id
     )
   end
 end
