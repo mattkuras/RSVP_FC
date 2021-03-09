@@ -43,15 +43,10 @@ const MemberDashboard = (props) => {
         <h3 className="link-item"><Link className="link-item" to={`${url}`}>Home</Link></h3>
         <h3 className="link-item"><Link className="link-item" to={`${url}/requests`}>Member Requests</Link></h3>
       </div>
-
-      <Switch>
-        <Route path={`${path}/games`}>
-          <Games member={props.member}
-            fetchGames={fetchGames}
-            games={games}
-            setGames={setGames} />
-        </Route>
-      </Switch>
+      <Games member={props.member}
+        fetchGames={fetchGames}
+        games={games}
+        setGames={setGames} />
     </>
   );
 }
