@@ -62,8 +62,9 @@ const Games = (props) => {
 }
 
   const GamesList = () => {
-    return <Flickity reloadOnUpdate={true} options={flickityOptions} >
+    return <div classname='games'><Flickity reloadOnUpdate={true} options={flickityOptions} >
       {games.map((game, index) => {
+        console.log(game.members)
         let rsvpStatus;
         if (game.members.find((m) => m.email == props.member.email)) {
           rsvpStatus = true
@@ -78,10 +79,12 @@ const Games = (props) => {
             <h2 className='capacity'>Availability: {game.remaining_capacity} spots remaining</h2>
             <h2 className='rsvp-status'>Rsvp Status: {rsvpStatus ? 'Ready to Play' : 'RSVP Required'}</h2>
             {rsvpStatus ? <p id={index} onClick={cancelReservation}> Cancel RSVP</p> : <p id={index} onClick={makeReservation} >RSVP Now</p>}
+            <h2>Members Attending:</h2>
+            <h3>{game.members.map((m) => m.full_name)}</h3>
           </div>
         )
       })}
-    </Flickity>
+    </Flickity></div> 
   }
 
 

@@ -1,14 +1,51 @@
-.members-attending p  {
-    text-align: center;
-}
-.members-attending h2  {
-    text-align: center;
-}
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+
 .game-container {
-    border: solid black .5px;
+  width: 100vw;
+}
+.edit-game {
+  font-family: "Quicksand", sans-serif;
+  border-top: 1px solid #ccc;
+  padding-top: 30px;
+  margin: 0 auto;
 }
 
-.edit-game button {
-    width: 15px;
-    height: 10px;
+.game-edit-container {
+  font-family: "Quicksand", sans-serif;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+}
+
+.game-edit-container .game-info {
+  width: 300px;
+  height: 50px;
+  border-radius: 5px;
+  font-size: 30px;
+  margin: 1rem auto 0px;
+}
+
+.game-edit-container h2 {
+    text-align: center;
+}
+
+.save-btn {
+  padding: 8px 35px;
+  font-size: 18px;
+  width: 300px;
+  background-color: #000;
+  outline: none;
+  border: 1px solid #000;
+  border-radius: 4px;
+  color: #fff;
+  margin: 1rem auto 0px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.save-btn:hover {
+  cursor: pointer;
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #000;
 }

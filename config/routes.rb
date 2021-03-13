@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get 'games/current', to: 'games#current_game'
   resources :games
+  delete '/games/:id', to: 'games#destroy'
 
   resources :requests, only:[:index, :create, :show] 
   post '/requests/waitlist', to: 'requests#waitlist'

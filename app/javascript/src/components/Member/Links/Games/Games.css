@@ -6,11 +6,20 @@
     flex-direction: column;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
-    height: 200px;
+    height: 300px;
+    overflow: auto;
 }
 .game h2 {
     margin-bottom: 10px;
 }
+
+.game h2:nth-child(1) {
+    margin-top: 10px;
+}
 .games-container {
-    height: 400px;
+    height: 800px;
+}
+
+.games {
+    width: 75%
 }

@@ -23,7 +23,7 @@ const Home = (props) => {
       .then(resp => {
         if (resp.data.success) {
           let mems = props.members.filter(m => m.id != id)
-          props.delete(mems)
+          props.setMembers(mems)
           console.log('deleted!')
         }
         else {
