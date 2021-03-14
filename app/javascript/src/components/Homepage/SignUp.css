@@ -1,17 +1,80 @@
-.contact-form {
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+
+.signup-form {
+  width: 60%;
+  height: 70%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 100%;
-  background-color: yellow;
+  font-family: "Quicksand", sans-serif;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 2rem;
+  margin: 100px auto;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
-
-.input {
-  width: 200px;
-  height: 40px;
+h2 {
+  text-align: center;
+  margin-bottom: 15px;
 }
-
-.register-input-container {
+.input-container {
+  width: 90%;
   display: flex;
+  margin: auto;
+}
+.input-container input {
+  width: 100%;
+  margin: 20px 0;
+  line-height: 2em;
+  background: #fafafa;
+}
+.input-container textarea {
+  width: 100%;
+  height: 100px;
+  margin: 20px auto;
+  background: #fafafa;
+}
+.input.split {
+  width: 48.5%;
+}
+.input-container.dub {
+  display: flex;
+  justify-content: space-between ;
+}
+
+
+.submit-button {
+  width: 30%;
+  height: 2rem;
+  margin: auto;
+}
+.sub-btn{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+@media only screen and (max-width:500px) {
+  .submit {
+    width: 30%;
+  }
+ 
+}
+
+.message-sent {
+  margin: 10px auto 0;
+  padding: 10px 25px;
+  background: #97e6b1;
+  font-family: "Nanum Gothic", sans-serif;
+}
+.message-sent p {
+  color: black;
+}
+.close {
+  /* position: absolute; */
+  text-align: right;
+  font-size: 2rem;
+  cursor: pointer;
 }

@@ -15,10 +15,10 @@ class RequestsController < ApplicationController
     request = Request.new(request_params)
     if Member.check_reference(request_params[:reference]) && request.original?
       if request.save
-        render json: request
+        render json: {request: request, success: 'request has been made'}
       end
     elsif request.original? == false 
-      render json: "you're already a member"
+      render json: "Already a member or request still pending."
     else
       render json: "this reference is incorrect"
     end

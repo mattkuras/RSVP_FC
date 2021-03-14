@@ -3,7 +3,7 @@
 .dashboard-navbar {
   font-family: "Quicksand", sans-serif;
   height: 60px;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,6 +16,7 @@
 .nav-h1 {
   color: #fff;
   text-decoration: none;
+
 }
 .logout {
   cursor: pointer;

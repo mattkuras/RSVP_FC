@@ -27,10 +27,7 @@
   width: 60%;
 }
 
-h1 {
-  margin: 30px auto;
-  text-align: center;
-}
+
 
 @media only screen and (max-width: 600px) {
   .login-form {

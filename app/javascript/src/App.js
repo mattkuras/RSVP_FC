@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react"
 import './App.css';
 import { Redirect, Route, BrowserRouter as Router } from "react-router-dom"
 import Axios from 'axios'
-import Register from './components/Homepage/Register'
 import Landing from './components/Homepage/Landing/Landing'
 import AdminLogin from './components/Admin/AdminLogin'
 import AdminDashboard from './components/Admin/AdminDashboard'
@@ -54,8 +53,7 @@ function App() {
   }
   return (
     <Router>
-      <Route exact path="/register" component={Register} />
-      <Route exact path="/" component={Landing} />
+      <Route exact path="/"> {loggedIn ? <Redirect to='/dashboard'/> : <Landing/> } </Route>
       <Route path='/admindashboard'
         render={props => (
           <AdminDashboard {...props} admin={admin} handleLogout={handleLogout} />

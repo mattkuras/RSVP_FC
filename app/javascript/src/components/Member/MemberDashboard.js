@@ -35,14 +35,14 @@ const MemberDashboard = (props) => {
   return (
     <>
       <nav className="dashboard-navbar">
-        <Link className="nav-h1" to='/'><h1>RsvpFC</h1></Link>
+        <Link className="nav-h1" to='/'><h2>RsvpFC</h2></Link>
         <h2 className='logout' onClick={props.handleLogout}>Logout</h2>
       </nav>
-      <div className="links">
+      {/* <div className="links">
         <h3 className="link-item"><Link className="link-item" to={`${url}/games`}>Current Matches</Link></h3>
         <h3 className="link-item"><Link className="link-item" to={`${url}`}>Home</Link></h3>
         <h3 className="link-item"><Link className="link-item" to={`${url}/requests`}>Member Requests</Link></h3>
-      </div>
+      </div> */}
       <Games member={props.member}
         fetchGames={fetchGames}
         games={games}
