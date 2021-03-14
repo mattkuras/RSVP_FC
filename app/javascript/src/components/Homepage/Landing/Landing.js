@@ -6,7 +6,7 @@ import Axios from 'axios'
 import { motion } from 'framer-motion'
 import Signup from '../SignUp'
 
-const Landing = () => {
+const Landing = (props) => {
     const [memberEmail, setMemberEmail] = useState("")
     const [game, setGame] = useState({})
     const [signupPage, toggleSignUpPage] = useState(false)
@@ -52,7 +52,7 @@ const Landing = () => {
         return <div className="container">
             <h1 className="login"><Link to='/login'>Login</Link></h1>
             <span className="sign-up-link" onClick={() => { toggleSignUpPage(true) }}><p>Not yet a member?</p></span>
-            <motion.h1 className='ball' animate={{ y: ['20%', '-20%',] }} transition={bounceTransition}><GiSoccerBall /></motion.h1>
+            <motion.h1 className='ball' animate={{ y: ['20%', '-20%',] }} transition={bounceTransition}><Link to='/admindashboard' ><GiSoccerBall /></Link></motion.h1>
         </div>
     }
     const bounceTransition = {

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import "./AdminLogin.css";
 import axios from "axios";
+import { GiSoccerBall } from 'react-icons/gi'
+import { BsArrowLeft } from 'react-icons/bs'
+import { motion } from 'framer-motion'
 
 const AdminLogin = (props) => {
   const [username, setUsername] = useState("");
@@ -31,15 +34,31 @@ const AdminLogin = (props) => {
   const redirect = () => {
     props.history.push("/admindashboard");
   };
+  const bounceTransition = {
+    y: {
+      duration: 0.4,
+      yoyo: Infinity,
+      ease: 'easeOut'
+    }
+  }
 
   return (
     <div className="login-page-container">
       <h1>Admin Login</h1>
+      <div className='ball-arrow'>
+        <div className='arrow'><BsArrowLeft onClick={() => props.history.push("/")} /></div>
+        <motion.div className='ball'
+          animate={{ y: ['20%', '-20%',] }}
+          transition={bounceTransition}
+          onClick={() => props.history.push("/")}>
+          <GiSoccerBall />
+        </motion.div>
+      </div>
       <form className="login-form" onSubmit={handleSubmit}>
-        <div className="input-container">
+        <div className="input-contain">
           <label for="username">Username: </label>
           <input
-            className="input"
+            className="member-input"
             type="text"
             placeholder="Enter Username"
             id="username"
@@ -47,10 +66,10 @@ const AdminLogin = (props) => {
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div className="input-container">
+        <div className="input-contain">
           <label for="password">Password: </label>
           <input
-            className="input"
+            className="member-input"
             type="password"
             placeholder="Enter Password"
             id="password"
@@ -58,7 +77,7 @@ const AdminLogin = (props) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <input type="submit" />
+        <input className='submit-btn' type="submit" />
       </form>
     </div>
   );

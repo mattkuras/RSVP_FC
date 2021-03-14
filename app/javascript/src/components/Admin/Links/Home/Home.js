@@ -10,12 +10,14 @@ const Home = (props) => {
   const [time, setTime] = useState('')
   const [capacity, setCapacity] = useState('')
   const [displayMessage, setDisplayMessage] = useState('')
+  const [confirmDelete, setConfirmDelete] = useState(false)
+  const [idToDelete, setId] = useState(0)
 
   const token = localStorage.getItem("token")
 
   const deleteMember = (e) => {
-    let id = e.target.id
-    Axios.delete(`/members/${id}`, {
+    console.log(idToDelete)
+    Axios.delete(`/members/${idToDelete}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -39,17 +41,13 @@ const Home = (props) => {
         <h3>Member Email</h3>
         <h3>Member Name</h3>
         <h3>Referrer Email</h3>
-        <h3>Times Missed</h3>
-        <h3>Edit Times Missed</h3>
       </div>
       {props.members.map((m) => (
         <div className="member" key={m.id}>
-          <FaRegTrashAlt className="trash-icon edit-icons" id={m.id} onClick={deleteMember} />
+          <FaRegTrashAlt className="trash-icon edit-icons" id={m.id} onClick={confirm} />
           <h3>{m.email}</h3>
           <h3>{m.full_name}</h3>
           <h3>{m.reference}</h3>
-          <h3>2</h3>
-          <h3 className="edit-icons"><AiOutlinePlusCircle className="icon" /> <AiOutlineMinusCircle className="icon" /></h3>
         </div>
       ))}
     </div>
@@ -77,10 +75,33 @@ const Home = (props) => {
     setTime('')
     setCapacity('')
   }
+  
+  const confirm = (e) => {
+    setConfirmDelete(true)
+    setId(e.target.id)
+  }
+  const cancel = () => {
+    setConfirmDelete(false)
+  }
+
+  const DeleteMessage = () => {
+    return <div className='delete-message'>
+      <h2>Are you sure you want to delete this member?</h2>
+      <div className='options-container'>
+        <h3 onClick={deleteMember} className='confirm-delete'>Delete</h3>
+        <h3 className='cancel' onClick={cancel}>Cancel</h3>
+      </div>
+    </div>
+  }
+
+  let message;
+  if (confirmDelete == true) {
+    message = <DeleteMessage />
+  }
 
   return (
     <div className="home-container">
-      <div className="create-game">
+      <div className="create-game-container">
         <div className="game-input-container">
           <h2>Enter new game here:</h2>
           <input className="game-info" type="text" placeholder="Enter Date Here" onChange={(e) => setDate(e.target.value)} value={date} />
@@ -88,9 +109,11 @@ const Home = (props) => {
           <input className="game-info" type="text" placeholder="Enter Location Here" onChange={(e) => setLocation(e.target.value)} value={location} />
           <input className="game-info" type="text" placeholder="Enter Capacity" onChange={(e) => setCapacity(e.target.value)} value={capacity} />
           <input className="create-btn" type="submit" value="Create" onClick={handleSubmit} />
+          <span className='display-message'>{displayMessage}</span>
         </div>
       </div>
-      <span className='display-message'>{displayMessage}</span>
+     
+      {message}
       <ListMembers />
     </div>
   );

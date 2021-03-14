@@ -47,7 +47,12 @@
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 .ball {
+  text-decoration: none;
   font-size: 4rem;
+}
+.ball a {
+  text-decoration: none;
+  color: black;
 }
 .button {
   margin-top: 25px;
@@ -77,6 +82,8 @@
 .sign-up-link {
   text-decoration: none;
   color: #aaa;
+  margin-bottom: 15px;
+  margin-top: 10px;
 }
 
 .sign-up-link:hover {

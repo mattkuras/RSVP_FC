@@ -11,6 +11,8 @@ const Requests = (props) => {
   
   const accept = (e) => {
     let member = {email: e.target.id}
+    console.log(e.target)
+    console.log(member)
     Axios.post('/members', member, {
       headers: {
         Authorization: `Bearer ${token}`
@@ -44,6 +46,7 @@ const Requests = (props) => {
         else {
           console.log('it didnt didnt delete')
         }
+        setConfirmationMessage(false)
       })
   }
 
@@ -84,7 +87,7 @@ const Requests = (props) => {
 
   const DenyConfirmation = () => {
     return <div className='confirmation-message'>
-      <p>do you want to waitlist or delete this request?</p>
+      <div>Do you want to waitlist or delete this request?</div>
       <div onClick={waitlist}>Waitlist</div>
       <div onClick={deny}>Delete</div>
       <div onClick={handleDeny}>Cancel</div>

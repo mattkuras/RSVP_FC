@@ -3,7 +3,7 @@
 .dashboard-navbar {
   font-family: "Quicksand", sans-serif;
   height: 60px;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,6 +16,7 @@
 .nav-h1 {
   color: #fff;
   text-decoration: none;
+
 }
 .logout {
   cursor: pointer;
@@ -57,19 +58,27 @@
   font-family: "Quicksand", sans-serif;
   display: flex;
   margin-top: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 2rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 .game-input-container .game-info {
   width: 300px;
   height: 50px;
   border-radius: 5px;
-  margin-right: 50px;
+  margin: 10px auto;
   font-size: 30px;
+  
 }
 
 .create-btn {
-  padding: 8px 35px;
   font-size: 18px;
+  margin: auto;
   background-color: #000;
   outline: none;
   border: 1px solid #000;

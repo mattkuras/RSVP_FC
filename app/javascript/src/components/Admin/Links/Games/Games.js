@@ -84,7 +84,11 @@ const Games = (props) => {
             <h2 className='location'>Location: {game.location}</h2>
             <h2 className='capacity'>Availability: {game.remaining_capacity} spots remaining</h2>
             <h2>Members Attending:</h2>
-            <h3>{game.members.map((m) => m.full_name)}</h3>
+            <div className='members-attending'>
+              {game.members.map((m) => (
+                <h3 className='attending-member'>{m.full_name}</h3>
+              ))}
+            </div>
           </div>
         )
       })}

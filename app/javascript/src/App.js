@@ -53,7 +53,7 @@ function App() {
   }
   return (
     <Router>
-      <Route exact path="/"> {loggedIn ? <Redirect to='/dashboard'/> : <Landing/> } </Route>
+      <Route exact path="/"> <Landing/> </Route>
       <Route path='/admindashboard'
         render={props => (
           <AdminDashboard {...props} admin={admin} handleLogout={handleLogout} />

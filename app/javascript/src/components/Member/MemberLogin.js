@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./MemberLogin.css";
 import axios from "axios";
 import { GiSoccerBall } from 'react-icons/gi'
+import { BsArrowLeft } from 'react-icons/bs'
 import { motion } from 'framer-motion'
 
 const MemberLogin = (props) => {
@@ -35,24 +36,26 @@ const MemberLogin = (props) => {
     props.history.push("/dashboard");
   };
 
-  const ballTransition = {ease: "linear", duration: 2, repeat: Infinity }
   const bounceTransition = {
     y: {
-        duration: 0.4,
-        yoyo: Infinity,
-        ease: 'easeOut'
-    }}
+      duration: 0.4,
+      yoyo: Infinity,
+      ease: 'easeOut'
+    }
+  }
 
   return (
     <div className="login-page-container">
       <h1>Member Login</h1>
-      <motion.h1 className='ball'
-        animate={{ y: ['20%', '-20%',] }} 
-        transition={bounceTransition}
-        onClick={() => props.history.push("/")}>
-        <GiSoccerBall />
-      </motion.h1>
-
+      <div className='ball-arrow'>
+        <div className='arrow'><BsArrowLeft onClick={() => props.history.push("/")} /></div>
+        <motion.div className='ball'
+          animate={{ y: ['20%', '-20%',] }}
+          transition={bounceTransition}
+          onClick={() => props.history.push("/")}>
+          <GiSoccerBall />
+        </motion.div>
+      </div>
       <form className="login-form" onSubmit={handleSubmit}>
         <div className="input-contain">
           <label for="email">Email: </label>

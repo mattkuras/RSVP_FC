@@ -8,6 +8,9 @@ import {
   Link,
   useRouteMatch
 } from "react-router-dom";
+import { motion } from 'framer-motion'
+import { GiSoccerBall } from 'react-icons/gi'
+
 
 const MemberDashboard = (props) => {
   const [games, setGames] = useState([])
@@ -28,7 +31,12 @@ const MemberDashboard = (props) => {
     })
   }
 
-
+  const bounceTransition = {
+    y: {
+        duration: 0.4,
+        yoyo: Infinity,
+        ease: 'easeOut'
+    }}
 
   let { path, url } = useRouteMatch();
 
@@ -47,6 +55,9 @@ const MemberDashboard = (props) => {
         fetchGames={fetchGames}
         games={games}
         setGames={setGames} />
+      <div className='ball-container'>
+        <motion.h1 className='ball' ><Link to='/admindashboard' ><GiSoccerBall /></Link></motion.h1>
+      </div>
     </>
   );
 }

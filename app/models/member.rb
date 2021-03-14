@@ -6,8 +6,13 @@ class Member < ApplicationRecord
 
 
   validates :first_name, :last_name, :email, :reference, :password, presence: true
-
+  before_save :capitalize_names
   has_many :rsvps
+
+  def capitalize_names 
+    first_name.capitalize! 
+    last_name.capitalize!
+  end
 
   def self.check_reference(r)
     ref = Member.find_by(email: r)
