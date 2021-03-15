@@ -74,6 +74,7 @@ Link:visited {
   width: 100%;
   background-size: cover;
   background-position: bottom;
+  overflow-x: hidden;
 }
 
 .sign-up-link {
@@ -117,5 +118,23 @@ Link:visited {
 
     .next-game-container {
       font-size: 1.2rem;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+  .container {
+    margin-top: 150px;
+    width: 300px;
+  }
+
+    .next-game-container {
+      font-size: 18px;
+    }
+
+    .input-con {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 }

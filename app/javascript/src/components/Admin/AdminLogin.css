@@ -1,18 +1,15 @@
-.login-form {
+.admin-login-form {
   display: flex;
   flex-direction: column;
   padding: 2rem;
-  width: 40vw;
-  margin: 0 auto;
+  width: 600px;
   align-items: center;
   border: 1px solid #ccc;
   background-color: #fff;
-  border-radius: 5px;
+  border-radius: 2px;
   padding: 2rem;
   margin: 25px auto;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
 
 .input-container {
@@ -21,10 +18,25 @@
   justify-content: space-evenly;
 }
 
-/* label {
-    color: #fff;
-    font-size: 1.5rem;
-  } */
+.button {
+  margin-top: 25px;
+  padding: 10px 25px;
+  background-color: #000;
+  outline: none;
+  text-decoration: none;
+  border: 1px solid #000;
+  border-radius: 4px;
+  color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.button:hover {
+  cursor: pointer;
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #000;
+}
+
 
 .input {
   margin: 2rem 1rem;
@@ -33,8 +45,22 @@
 
 
 
-@media only screen and (max-width: 600px) {
-  .login-form {
-    width: 80vw;
+@media only screen and (max-width: 630px) {
+  .admin-login-form {
+    width: 400px;
+  }
+
+  .ball-arrow {
+    justify-content: space-between;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .admin-login-form {
+    width: 300px;
+  }
+
+  .admin-login-title {
+    margin-bottom: 30px;
   }
 }

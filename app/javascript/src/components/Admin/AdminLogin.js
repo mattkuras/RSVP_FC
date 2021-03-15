@@ -44,7 +44,7 @@ const AdminLogin = (props) => {
 
   return (
     <div className="login-page-container">
-      <h1>Admin Login</h1>
+      <h1 className="admin-login-title">Admin Login</h1>
       <div className='ball-arrow'>
         <div className='arrow'><BsArrowLeft onClick={() => props.history.push("/")} /></div>
         <motion.div className='ball'
@@ -54,7 +54,7 @@ const AdminLogin = (props) => {
           <GiSoccerBall />
         </motion.div>
       </div>
-      <form className="login-form" onSubmit={handleSubmit}>
+      <form className="admin-login-form" onSubmit={handleSubmit}>
         <div className="input-contain">
           <label for="username">Username: </label>
           <input
@@ -77,7 +77,7 @@ const AdminLogin = (props) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <input className='submit-btn' type="submit" />
+        <input className='button' type="submit" />
       </form>
     </div>
   );

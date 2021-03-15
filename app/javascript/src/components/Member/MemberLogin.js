@@ -56,7 +56,7 @@ const MemberLogin = (props) => {
           <GiSoccerBall />
         </motion.div>
       </div>
-      <form className="login-form" onSubmit={handleSubmit}>
+      <form className="member-login-form" onSubmit={handleSubmit}>
         <div className="input-contain">
           <label for="email">Email: </label>
           <input
@@ -79,7 +79,7 @@ const MemberLogin = (props) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <input className='submit-btn' type="submit" />
+        <input className='button' type="submit" />
       </form>
     </div>
   );

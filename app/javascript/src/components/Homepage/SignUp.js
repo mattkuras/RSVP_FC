@@ -68,7 +68,7 @@ const SignUp = (props) => {
                 <input className="input" type='text' placeholder="Reference Email" id="reference" value={reference} onChange={(e) => setReference(e.target.value)} />
             </div>
             <div className='sub-btn'>
-                <input type="submit" value='Send Request' className='submit-button' />
+                <input type="submit" value='Send Request' className='signup-button' />
                 {messageSent ? renderOk() : null}
             </div>
         </form>
