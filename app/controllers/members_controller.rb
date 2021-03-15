@@ -20,6 +20,7 @@ class MembersController < ApplicationController
       request.destroy
       render json: member
     else
+      byebug
       render json: { error: "there was an error" }
     end
   end

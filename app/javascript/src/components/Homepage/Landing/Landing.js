@@ -50,9 +50,9 @@ const Landing = (props) => {
 
     const Login = () => {
         return <div className="container">
-            <h1 className="login"><Link to='/login'>Login</Link></h1>
-            <span className="sign-up-link" onClick={() => { toggleSignUpPage(true) }}><p>Not yet a member?</p></span>
             <motion.h1 className='ball' animate={{ y: ['20%', '-20%',] }} transition={bounceTransition}><Link to='/admindashboard' ><GiSoccerBall /></Link></motion.h1>
+            <Link className="button" to='/login'>Login</Link>
+            <span className="sign-up-link" onClick={() => { toggleSignUpPage(true) }}><p>Not yet a member?</p></span>
         </div>
     }
     const bounceTransition = {
@@ -77,7 +77,7 @@ const Landing = (props) => {
                     <input className="email-field" onChange={handleChange} type="text" name="email-registration" placeholder="Enter Email Here..." />
                 </div>
                 <span className='display-message'>{displayMessage}</span>
-                <input onClick={checkRsvpStatus} className="button" type="submit" value="Submit" />
+                <input onClick={checkRsvpStatus} className="button" type="submit" value="Check Status" />
             </div>
 
 
