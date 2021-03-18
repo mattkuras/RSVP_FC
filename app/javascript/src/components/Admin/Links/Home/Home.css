@@ -14,7 +14,7 @@
   display: flex;
   flex-direction: column;
   width: 50%;
-  margin-left: 25%;
+  margin: 0 auto;
 }
 
 .game-input-container .game-info {
@@ -89,24 +89,6 @@
     text-align: center;
     padding: 0;
   }
-  .game-input-container {
-    flex-direction: column;
-    width: 50%;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: 25%;
-  }
-
-  .game-input-container .game-info {
-    margin-right: auto;
-  }
-
-  .game-input-container input {
-    margin: 15px auto;
-  }
-  .game-input-container h2 {
-    text-align: center;
-  }
 
   .member h3 {
     font-size: 0.9rem;
@@ -138,4 +120,26 @@
 }
 .confirm-delete {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+.referrer-info {
+  display: none;
+}
+  .game-input-container {
+    width: 80%;
+  }
+  .game-input-container .game-info {
+    width: 200px;
+    font-size: 18px;
+    height: 25px;
+  }
+
+  .create-btn {
+    width: 200px;
+  }
+
+  .member {
+    line-height: 1.2rem;
+  }
 }

@@ -51,7 +51,7 @@ const Landing = (props) => {
     const Login = () => {
         return <div className="container">
             <motion.h1 className='ball' animate={{ y: ['20%', '-20%',] }} transition={bounceTransition}><Link to='/admindashboard' ><GiSoccerBall /></Link></motion.h1>
-            <Link className="button" to='/login'>Login</Link>
+            <Link className="button login-btn" to='/login'>Login</Link>
             <span className="sign-up-link" onClick={() => { toggleSignUpPage(true) }}><p>Not yet a member?</p></span>
         </div>
     }

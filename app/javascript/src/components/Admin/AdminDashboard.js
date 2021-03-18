@@ -40,7 +40,7 @@ const AdminDashboard = (props) => {
       }
     }).then(resp => {
       setRequests(resp.data)
-    } )
+    } ) 
   }
   const fetchMembers = () => {
     Axios.get('/members', {

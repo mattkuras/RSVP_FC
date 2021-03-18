@@ -50,6 +50,10 @@ Link:visited {
   text-decoration: none;
   color: black;
 }
+.login-btn {
+  font-size: 48px;
+}
+
 .button {
   margin-top: 25px;
   padding: 10px 25px;

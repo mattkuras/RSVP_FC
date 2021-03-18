@@ -40,14 +40,14 @@ const Home = (props) => {
         <h3>Delete</h3>
         <h3>Member Email</h3>
         <h3>Member Name</h3>
-        <h3>Referrer Email</h3>
+        <h3 className="referrer-info">Referrer Email</h3>
       </div>
       {props.members.map((m) => (
         <div className="member" key={m.id}>
           <FaRegTrashAlt className="trash-icon edit-icons" id={m.id} onClick={confirm} />
           <h3>{m.email}</h3>
           <h3>{m.full_name}</h3>
-          <h3>{m.reference}</h3>
+          <h3 className="referrer-info">{m.reference}</h3>
         </div>
       ))}
     </div>

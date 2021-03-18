@@ -62,21 +62,14 @@
   background-color: #fff;
   border-radius: 5px;
   padding: 2rem;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
 
 .game-input-container .game-info {
-  width: 300px;
-  height: 50px;
-  border-radius: 5px;
-  margin: 10px auto;
-  font-size: 30px;
-  
+  margin: 10px auto;  
 }
 
-.create-btn {
+.create-btn { 
   font-size: 18px;
   margin: auto;
   background-color: #000;
@@ -138,24 +131,10 @@
   color: #000;
 }
 
-@media only screen and (max-width: 1100px) {
-  .create-game {
-    text-align: center;
-    padding: 0;
-  }
-  .game-input-container {
-    flex-direction: column;
-    width: 50%;
+@media only screen and (max-width: 500px) {
+  .links {
+    width: 100%;
+    font-size: .8rem;
     justify-content: space-between;
-    align-items: center;
-    margin-left: 25%;
-  }
-
-  .game-input-container .game-info {
-    margin-right: auto;
-  }
-
-  .game-input-container input {
-    margin: 15px auto;
   }
 }
