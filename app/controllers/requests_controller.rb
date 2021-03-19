@@ -34,7 +34,7 @@ class RequestsController < ApplicationController
     request = Request.find_by(id: request_params[:id])
     waitlisted_request = request.waitlist
     if waitlisted_request.save
-      # WaitlistMailer.welcome_waitlisted_member(waitlisted_request).deliver_now
+      WaitlistMailer.welcome_waitlisted_member(waitlisted_request).deliver_now
       request.destroy
       render json: {success: waitlisted_request}
     else

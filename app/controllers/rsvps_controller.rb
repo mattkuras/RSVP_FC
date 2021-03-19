@@ -15,7 +15,7 @@ class RsvpsController < ApplicationController
     else
       if rsvp.save
         render json: { success: "your spot has been reserved" }
-        # RsvpMailer.rsvp_created(rsvp).deliver_later
+        RsvpMailer.rsvp_created(rsvp).deliver_later
       else
         render json: { errors: rsvp.errors }
       end
@@ -33,7 +33,7 @@ class RsvpsController < ApplicationController
     game = Game.where(id: rsvp.game_id).first
     if rsvp.destroy
       render json: { success: "your reservation has been deleted" }
-      # RsvpMailer.rsvp_canceled(member, game).deliver_later
+      RsvpMailer.rsvp_canceled(member, game).deliver_later
     else
       render json: { failure: "rsvp did not delete" }
     end
