@@ -22,7 +22,7 @@
 }
 
 .games {
-    width: 75%
+    width: 82%
 }
 .change-rsvp {
     margin-bottom: 20px;
@@ -34,3 +34,13 @@
     width: 100%;
     height: 100px;
 }
+
+#zero {
+    background: #ff675c;
+}
+
+@media only screen and (max-width: 800px) {    
+    .games {
+      width: 100%;
+    }
+      }

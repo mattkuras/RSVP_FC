@@ -10,8 +10,8 @@ import MemberLogin from './components/Member/MemberLogin'
 
 
 function App() {
-  const [admin, setAdmin] = useState()
-  const [member, setMember] = useState()
+  const [admin, setAdmin] = useState(null)
+  const [member, setMember] = useState(null)
   const [loggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {

@@ -10,8 +10,8 @@ class RsvpsController < ApplicationController
     rsvp = Rsvp.new
     rsvp.member_id = params[:member_id]
     rsvp.game_id = params[:game_id]
-    if rsvp.game.at_capacity?
-      render json: "sorry this game is at capcity"
+    if rsvp.game.at_capacity
+      render json: {atCapacity: 'sorry this game is at capacity'}
     else
       if rsvp.save
         render json: { success: "your spot has been reserved" }

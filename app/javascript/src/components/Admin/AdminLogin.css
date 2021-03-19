@@ -1,9 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+
 .admin-login-form {
   display: flex;
   flex-direction: column;
   padding: 2rem;
   width: 600px;
   align-items: center;
+  font-family: "Quicksand", sans-serif;
   border: 1px solid #ccc;
   background-color: #fff;
   border-radius: 2px;

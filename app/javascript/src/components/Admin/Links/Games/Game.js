@@ -17,7 +17,7 @@ const Game = (props) => {
         setState(prevState => ({
             datetime: game.formatted_time,
             location: game.location,
-            capacity: game.remaining_capacity
+            capacity: game.capacity
         }))
     }, [])
 

@@ -14,7 +14,7 @@ class Game < ApplicationRecord
     capacity - members.length
   end
 
-  def at_capacity?
+  def at_capacity
     self.remaining_capacity < 1 ? true : false
   end
 
