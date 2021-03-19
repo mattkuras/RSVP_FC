@@ -1,31 +1,31 @@
 import React, { useState } from "react";
+import {  useParams} from 'react-router-dom'
 import "./MemberLogin.css";
 import axios from "axios";
 import { GiSoccerBall } from 'react-icons/gi'
 import { BsArrowLeft } from 'react-icons/bs'
 import { motion } from 'framer-motion'
 
-const MemberLogin = (props) => {
+const ResetPassword = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [displayMessage, setDisplayMessage] = useState('')
-  const [forgotPassword, setForgotPassword] = useState(false)
-  const [memberEmail, setMemberEmail] = useState("");
 
+  let { id } = useParams();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    let user = {
+    let member = {
       email: email,
       password: password,
+      confirm_password: confirmPassword,
     };
-    axios.post("/login", { user })
+    axios.patch(`/members/${id}`, { member })
       .then(resp => {
         console.log(resp)
         if (resp.data.success) {
-          localStorage.setItem("token", resp.data.jwt)
-          props.handleLogin(resp.data.user)
-          redirect()
+            setDisplayMessage('Your password has been updated! Click the arrow above to login.')
         }
         else {
           console.log(resp.data.failure)
@@ -35,20 +35,9 @@ const MemberLogin = (props) => {
       })
     setPassword('')
     setEmail('')
+    setConfirmPassword('')
   }
 
-  const resetPassword = (event) => {
-    event.preventDefault();
-    let user = {
-      email: memberEmail,
-    };
-    axios.post("/forgot/password", { user })
-      .then(resp => {
-        console.log(resp)
-        setMemberEmail('')
-        setDisplayMessage(resp.data)
-      })
-  }
 
   const redirect = () => {
     props.history.push("/dashboard");
@@ -62,30 +51,10 @@ const MemberLogin = (props) => {
     }
   }
 
-  const ForgotPassword = () => {
-    if (forgotPassword) {
-      return (
-        <div className="forgot-contain">
-          <label id='reset' for="email">Enter your email and we'll send you a link a to reset your password. </label>
-          <input
-            className="member-input"
-            type="text"
-            placeholder="Enter Email"
-            id="email"
-            value={memberEmail}
-            onChange={(e) => setMemberEmail(e.target.value)}
-          />
-          <button className='forgot-button'  onClick={resetPassword}>Send Link</button> 
-        </div>
-      )
-    } else {
-      return (<span onClick={() => setForgotPassword(true)} className='forgot-password'>Forgot Password?</span>)
-    }
-  }
 
   return (
     <div className="login-page-container">
-      <h1>Member Login</h1>
+      <h1>Reset Password</h1>
       <div className='ball-arrow'>
         <div className='arrow'><BsArrowLeft onClick={() => props.history.push("/")} /></div>
         <motion.div className='ball'
@@ -118,12 +87,22 @@ const MemberLogin = (props) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+        <div className="input-contain">
+          <label for="confirm-password">Confirm Password: </label>
+          <input
+            className="member-input"
+            type="password"
+            placeholder="Confirm Password"
+            id="confirm-password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+        </div>
         <span className='failure-message'>{displayMessage}</span>
         <input className='button' type='submit' />
-        <ForgotPassword />
       </form>
     </div>
   );
 };
 
-export default MemberLogin;
+export default ResetPassword;

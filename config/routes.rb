@@ -20,10 +20,12 @@ Rails.application.routes.draw do
   resource :admins, only: [:create]
   post "/login", to: "sessions#login"
   get "/auto_login", to: "sessions#auto_login"
-  
-  resources :members, only: [:create, :index, :destroy]
+  post '/forgot/password', to: 'sessions#reset'
+
+  resources :members, only: [:create, :index, :destroy, :update]
   delete '/members/:id', to: 'members#destroy'
   post "membersdashboard/login", to: "sessions#member_login"
+
 
   get '*path', to: 'home#index', via: :all
 

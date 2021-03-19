@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-  before_action :require_admin_login, except: [:show, :create, :destroy]
+  before_action :require_admin_login, except: [:show, :create, :destroy, :update]
   before_action :require_admin_or_member_login, only: [:index]
 
   def index
@@ -34,6 +34,20 @@ class MembersController < ApplicationController
     end
   end
 
+  def update
+    member = Member.find_by(email: params[:member][:email])
+    if params[:member][:password] == params[:member][:confirm_password]
+      member.update(password: params[:member][:password])
+      if member.save 
+        render json: {success: 'your password has been updated'}
+      else 
+        render json: {failure: 'there was an error updating your password'}
+      end
+    else
+      render json: {failure: 'passwords dont match. please try again'}
+    end
+  end
+
   private
 
   def member_params
@@ -42,7 +56,8 @@ class MembersController < ApplicationController
       :last_name,
       :email,
       :reference,
-      :password
+      :password,
+      :comfirm_password
     )
   end
 end

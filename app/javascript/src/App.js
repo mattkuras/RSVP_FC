@@ -7,7 +7,7 @@ import AdminLogin from './components/Admin/AdminLogin'
 import AdminDashboard from './components/Admin/AdminDashboard'
 import MemberDashboard from './components/Member/MemberDashboard'
 import MemberLogin from './components/Member/MemberLogin'
-
+import ResetPassword from './components/Member/ResetPassword'
 
 function App() {
   const [admin, setAdmin] = useState(null)
@@ -80,6 +80,7 @@ function App() {
         )}>
         {loggedIn && member ? <Redirect to="/dashboard" /> : null}
       </Route>
+      <Route exact path='/:id/resetpassword' component={ResetPassword}/>
     </Router>
   );
 }

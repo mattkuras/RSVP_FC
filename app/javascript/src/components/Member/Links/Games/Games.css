@@ -35,9 +35,6 @@
     height: 100px;
 }
 
-#zero {
-    background: #ff675c;
-}
 
 @media only screen and (max-width: 800px) {    
     .games {

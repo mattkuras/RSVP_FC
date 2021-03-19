@@ -75,6 +75,41 @@
   border: 1px solid #000;
 }
 
+.failure-message {
+  margin: auto;
+  text-align: center;
+}
+.forgot-password {
+  margin: auto;
+  align-items: center;
+  padding-top: 22px;
+  cursor: pointer;
+}
+.forgot-contain {
+  display: flex;
+  margin-top: 25px;
+  justify-content: space-between;
+}
+#reset{
+  width: 33%;
+  text-align: center;
+}
+.forgot-contain .member-input {
+  width: 40%;
+  margin: 0 
+}
+.forgot-contain .forgot-button {
+  width: 20%;
+  height: 300%;
+  background-color: #000;
+  outline: none;
+  text-decoration: none;
+  border: 1px solid #000;
+  border-radius: 4px;
+  color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
 @media only screen and (max-width: 630px) {
   .member-login-form {
     width: 400px;

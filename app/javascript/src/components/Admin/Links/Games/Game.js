@@ -50,6 +50,7 @@ const Game = (props) => {
             location: state.location,
             capacity: state.capacity
         }
+        console.log(game)
         Axios.patch(`/games/${gameId}`, game, {
             headers: {
                 Authorization: `Bearer ${token}`
