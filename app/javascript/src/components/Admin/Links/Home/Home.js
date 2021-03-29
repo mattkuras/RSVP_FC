@@ -24,9 +24,10 @@ const Home = (props) => {
     })
       .then(resp => {
         if (resp.data.success) {
-          let mems = props.members.filter(m => m.id != id)
+          let mems = props.members.filter(m => m.id != idToDelete)
           props.setMembers(mems)
           console.log('deleted!')
+          setConfirmDelete(false)
         }
         else {
           console.log('it didnt delete')
@@ -77,16 +78,22 @@ const Home = (props) => {
   }
   
   const confirm = (e) => {
-    setConfirmDelete(true)
     setId(e.target.id)
+    console.log(idToDelete)
+    setConfirmDelete(true)
   }
   const cancel = () => {
     setConfirmDelete(false)
   }
 
+  const findMember = (id) => {
+    let member = props.members.find(member => member.id = id)
+    return member.full_name
+  }
   const DeleteMessage = () => {
+    let name = findMember(idToDelete)
     return <div className='delete-message'>
-      <h2>Are you sure you want to delete this member?</h2>
+      <h2>Are you sure you want to delete {name}?</h2>
       <div className='options-container'>
         <h3 onClick={deleteMember} className='confirm-delete'>Delete</h3>
         <h3 className='cancel' onClick={cancel}>Cancel</h3>

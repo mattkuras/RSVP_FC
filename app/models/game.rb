@@ -19,6 +19,6 @@ class Game < ApplicationRecord
   end
 
   def formatted_time
-    self.datetime.strftime("%B %y, %-l:%M%P")
+    self.datetime.strftime("%B %d, %-l:%M%P")
   end
 end

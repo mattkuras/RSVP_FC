@@ -46,7 +46,7 @@ const MemberLogin = (props) => {
       .then(resp => {
         console.log(resp)
         setMemberEmail('')
-        setDisplayMessage(resp.data)
+        setDisplayMessage('An email has been sent with a link to reset your password')
       })
   }
 

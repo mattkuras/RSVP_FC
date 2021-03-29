@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-  before_action :require_admin_login, except: [:show, :create, :destroy, :update]
+  before_action :require_admin_login, except: [:show, :update]
   before_action :require_admin_or_member_login, only: [:index]
 
   def index
@@ -20,7 +20,6 @@ class MembersController < ApplicationController
       request.destroy
       render json: member
     else
-      byebug
       render json: { error: "there was an error" }
     end
   end

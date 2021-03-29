@@ -25,13 +25,13 @@
 .logout:hover {
   color: #ccc;
 }
-.links {
+/* .links {
   font-family: "Quicksand", sans-serif;
   display: flex;
   justify-content: space-around;
   margin: 20px auto;
   width: 80%;
-}
+} */
 
 
 .header {
