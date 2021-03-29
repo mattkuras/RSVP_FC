@@ -86,14 +86,10 @@ const Home = (props) => {
     setConfirmDelete(false)
   }
 
-  const findMember = (id) => {
-    let member = props.members.find(member => member.id = id)
-    return member.full_name
-  }
+
   const DeleteMessage = () => {
-    let name = findMember(idToDelete)
     return <div className='delete-message'>
-      <h2>Are you sure you want to delete {name}?</h2>
+      <h2>Are you sure you want to delete member?</h2>
       <div className='options-container'>
         <h3 onClick={deleteMember} className='confirm-delete'>Delete</h3>
         <h3 className='cancel' onClick={cancel}>Cancel</h3>

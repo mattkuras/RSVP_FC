@@ -50,6 +50,7 @@ const AdminDashboard = (props) => {
     })
     .then(resp => {
       setMembers(resp.data)
+      console.log(resp.data)
     } )
   }
 

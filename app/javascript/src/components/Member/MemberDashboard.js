@@ -40,6 +40,8 @@ const MemberDashboard = (props) => {
 
   let { path, url } = useRouteMatch();
 
+  
+
   return (
     <>
       <nav className="dashboard-navbar">

@@ -75,7 +75,6 @@ const Games = (props) => {
         else {
           rsvpStatus = false
         }
-        
         return (
           <div className='game' id={game.id} key={game.id}>
             <h2 className='datetime'>Time: {game.formatted_time}</h2>
@@ -95,9 +94,18 @@ const Games = (props) => {
     </Flickity></div>
   }
 
+  let NoGamesMessage;
+
+  if (games.length < 1) {
+     NoGamesMessage = () => {
+      return (
+    <div className='no-games'>Sorry, there's currently no games on the schedule :(</div>
+      )
+    }}
 
   return (
     <div className="games-container">
+      {games.length < 1 ? <NoGamesMessage/> : null }
       <GamesList />
     </div>
   );
