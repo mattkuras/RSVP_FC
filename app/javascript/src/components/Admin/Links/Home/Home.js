@@ -76,11 +76,13 @@ const Home = (props) => {
     setTime('')
     setCapacity('')
   }
-  
+
   const confirm = (e) => {
-    setId(e.target.id)
-    console.log(idToDelete)
-    setConfirmDelete(true)
+    if (e.target.id) {
+      setId(e.target.id)
+      console.log(idToDelete)
+      setConfirmDelete(true)
+    }
   }
   const cancel = () => {
     setConfirmDelete(false)
@@ -108,14 +110,14 @@ const Home = (props) => {
         <div className="game-input-container">
           <h2>Enter new game here:</h2>
           <input className="game-info" type="text" placeholder="Enter Date Here" onChange={(e) => setDate(e.target.value)} value={date} />
-          <input className="game-info" type="text" placeholder="Enter Time Here" onChange={(e) => setTime(e.target.value)} value={time}/>
+          <input className="game-info" type="text" placeholder="Enter Time Here" onChange={(e) => setTime(e.target.value)} value={time} />
           <input className="game-info" type="text" placeholder="Enter Location Here" onChange={(e) => setLocation(e.target.value)} value={location} />
           <input className="game-info" type="text" placeholder="Enter Capacity" onChange={(e) => setCapacity(e.target.value)} value={capacity} />
           <input className="create-btn" type="submit" value="Create" onClick={handleSubmit} />
           <span className='display-message'>{displayMessage}</span>
         </div>
       </div>
-     
+
       {message}
       <ListMembers />
     </div>

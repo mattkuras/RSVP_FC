@@ -14,7 +14,7 @@
 .member {
   font-family: "Quicksand", sans-serif;
 }
-.confirmation-message div:hover {
+.confirmation-message .option:hover {
     background: black;
     color: white;
 }

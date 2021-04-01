@@ -16,6 +16,7 @@ class RequestsController < ApplicationController
     if Member.check_reference(request_params[:reference]) && request.original?
       if request.save
         render json: {request: request, success: 'request has been made'}
+        RequestMailer.new_request(request).deliver_now
       end
     elsif request.original? == false 
       render json: "Already a member or request still pending."

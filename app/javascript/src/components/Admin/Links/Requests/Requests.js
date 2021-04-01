@@ -88,9 +88,9 @@ const Requests = (props) => {
   const DenyConfirmation = () => {
     return <div className='confirmation-message'>
       <div>Do you want to waitlist or delete this request?</div>
-      <div onClick={waitlist}>Waitlist</div>
-      <div onClick={deny}>Delete</div>
-      <div onClick={handleDeny}>Cancel</div>
+      <div className='option' onClick={waitlist}>Waitlist</div>
+      <div className='option' onClick={deny}>Delete</div>
+      <div className='option'onClick={handleDeny}>Cancel</div>
     </div>
   }
 
